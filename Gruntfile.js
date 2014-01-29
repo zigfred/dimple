@@ -28,6 +28,8 @@ module.exports = function(grunt) {
                     "src/objects/storyboard/end.js",
                     "src/objects/aggregateMethod/*.js",
                     "src/objects/plot/*.js",
+                    "src/objects/exception/*.js",
+                    "src/objects/validation/*.js",
                     "src/methods/*.js",
                     "src/end.js"
                 ],

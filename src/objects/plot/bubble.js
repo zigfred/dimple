@@ -62,7 +62,7 @@
                 .transition().duration(duration)
                 .attr("cx", function (d) { return dimple._helpers.cx(d, chart, series); })
                 .attr("cy", function (d) { return dimple._helpers.cy(d, chart, series); })
-                .attr("r", function (d) { return dimple._helpers.r(d, chart, series); })
+                .attr("r", function (d) { return dimple._helpers.r(d, series); })
                 .call(function () {
                     if (!chart.noFormats) {
                         this.attr("fill", function (d) { return dimple._helpers.fill(d, chart, series); })

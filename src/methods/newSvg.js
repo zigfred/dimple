@@ -9,7 +9,7 @@
         }
         selectedShape = d3.select(parentSelector);
         if (selectedShape.empty()) {
-            throw "The '" + parentSelector + "' selector did not match any elements.  Please prefix with '#' to select by id or '.' to select by class";
+            throw dimple.exception.noMatches(parentSelector);
         }
         return selectedShape.append("svg").attr("width", width).attr("height", height);
     };

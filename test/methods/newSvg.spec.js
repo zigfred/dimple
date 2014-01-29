@@ -42,12 +42,12 @@
             d3.select(svg[0]).remove();
         });
 
-        it("should check selection exceptions", function() {
+        it("should check selection exception", function() {
             var svg,
                 random = function() {
                     dimple.newSvg("random string", 200, 100);
                 };
-            expect(random).toThrow("The 'random string' selector did not match any elements.  Please prefix with '#' to select by id or '.' to select by class");
+            expect(random).toThrow(dimple.exception.noMatches("random string"));
             svg = document.getElementsByTagName("svg");
             expect(svg.length).toEqual(0);
         });

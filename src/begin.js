@@ -6,7 +6,8 @@
 var dimple = {
     version: "1.1.4",
     plot: {},
-    aggregateMethod: {}
+    aggregateMethod: {},
+    validation: {}
 };
 
 // Wrap all application code in a self-executing function
