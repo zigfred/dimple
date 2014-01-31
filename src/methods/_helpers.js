@@ -1,4 +1,4 @@
-    // Copyright: 2013 PMSI-AlignAlytics
+    // Copyright: 2014 PMSI-AlignAlytics
     // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
     // Source: /src/methods/_helpers.js
     dimple._helpers = {
@@ -30,7 +30,7 @@
         xGap: function (chart, series) {
             console.log(chart);
             console.log(series);
-            return series._xBarGap();
+            return series._getBarGap("x");
         },
 
         // Calculate the x gap for clusters within bar type charts
@@ -38,14 +38,14 @@
             console.log(d);
             console.log(chart);
             console.log(series);
-            return series._xInnerBarGap(1 / d.width);
+            return series._getInnerBarGap("x", 1 / d.width);
         },
 
         // Calculate the y gap for bar type charts
         yGap: function (chart, series) {
             console.log(chart);
             console.log(series);
-            return series._yBarGap();
+            return series._getBarGap("y");
         },
 
         // Calculate the y gap for clusters within bar type charts
@@ -53,7 +53,7 @@
             console.log(d);
             console.log(chart);
             console.log(series);
-            return series._yInnerBarGap(1 / d.height);
+            return series._getInnerBarGap("y", 1 / d.height);
         },
 
         // Calculate the top left x position for bar type charts

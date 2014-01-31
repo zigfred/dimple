@@ -1,4 +1,4 @@
-        // Copyright: 2013 PMSI-AlignAlytics
+        // Copyright: 2014 PMSI-AlignAlytics
         // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
         // Source: /src/objects/axis/methods/_pointSize.js
         // The amount of an axis allocated to a single data point in bar type charts (not accounting for bar gap)

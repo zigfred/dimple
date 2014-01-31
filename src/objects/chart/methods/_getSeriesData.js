@@ -1,4 +1,4 @@
-        // Copyright: 2013 PMSI-AlignAlytics
+        // Copyright: 2014 PMSI-AlignAlytics
         // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
         // Source: /src/objects/chart/methods/_getSeriesData.js
         // Create a dataset containing positioning information for every series
@@ -347,6 +347,7 @@
                             // Set the colors on the row
                             ret.fill = baseColor.toString();
                             ret.stroke = baseColor.darker(0.5).toString();
+
                         }
 
                     }, this);

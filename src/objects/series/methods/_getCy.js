@@ -1,4 +1,4 @@
-        // Copyright: 2013 PMSI-AlignAlytics
+        // Copyright: 2014 PMSI-AlignAlytics
         // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
         // Source: /src/objects/series/methods/_getCy.js
 
@@ -23,7 +23,7 @@
                 dimple.validation._isPositiveNumber("offset", offset);
                 // Scale to get the bottom position and then calculate the inner position of the bar based on offset
                 // plus a half accounting for bar gaps
-                returnCy = this.y._scaleValue(unscaledValue) - this.y._pointSize() + this._yBarGap() + (offset + 0.5) * (this._yBarSize() / innerBarCount);
+                returnCy = this.y._scaleValue(unscaledValue) - this.y._pointSize() + this._getBarGap("y") + (offset + 0.5) * (this._getBarSize("y") / innerBarCount);
             } else if (this.y._hasCategories()) {
                 // Scale to get the left position of the bar and add half the bar size to get the centre
                 returnCy = this.y._scaleValue(unscaledValue) - (this.y._pointSize() / 2);

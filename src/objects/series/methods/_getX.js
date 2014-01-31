@@ -1,4 +1,4 @@
-        // Copyright: 2013 PMSI-AlignAlytics
+        // Copyright: 2014 PMSI-AlignAlytics
         // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
         // Source: /src/objects/series/methods/_getX.js
         // Calculate the top left x co-ordinate for the passed unscaled value
@@ -7,6 +7,7 @@
             var returnX = 0;
             // Validate the axis
             dimple.validation._isDefined("x axis", this.x);
+            dimple.validation._isDefined("unscaledValue", unscaledValue);
             // Handle the return type based on axis type
             if (this.x._hasTimeField()) {
                 // Centre on the x value rather than return top left
@@ -19,10 +20,10 @@
                 dimple.validation._isPositiveNumber("innerBarCount", innerBarCount);
                 dimple.validation._isPositiveNumber("offset", offset);
                 // Scale to get the left position of the bar and add half the bar size to get the centre
-                returnX = this.x._scaleValue(unscaledValue) + this._xBarGap() + offset * (this._xBarSize() / innerBarCount);
+                returnX = this.x._scaleValue(unscaledValue) + this._getBarGap("x") + offset * (this._getBarSize("x") / innerBarCount);
             } else if (this.x._hasCategories()) {
                 // Scale to get the left position of the bar and add half the bar size to get the centre
-                returnX = this.x._scaleValue(unscaledValue) + this._xBarGap();
+                returnX = this.x._scaleValue(unscaledValue) + this._getBarGap("x");
             } else {
                 throw dimple.exception.unsupportedAxisState("x");
             }

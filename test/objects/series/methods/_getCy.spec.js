@@ -38,8 +38,8 @@
             seriesUnderTest.y = mockAxis;
 
             // Set up series mocks
-            spyOn(seriesUnderTest, "_yBarGap").andReturn(barGap);
-            spyOn(seriesUnderTest, "_yBarSize").andReturn(barSize);
+            spyOn(seriesUnderTest, "_getBarGap").andReturn(barGap);
+            spyOn(seriesUnderTest, "_getBarSize").andReturn(barSize);
 
             // Set up validation spies
             spyOn(dimple.validation, "_isDefined").andReturn(true);
@@ -114,8 +114,8 @@
                 .toEqual(scaleReturn - pointSize + barGap + (offset + 0.5) * (barSize / innerBarCount));
             expect(seriesUnderTest.y._hasMultipleCategories).toHaveBeenCalled();
             expect(seriesUnderTest.y._scaleValue).toHaveBeenCalledWith(unscaledValue);
-            expect(seriesUnderTest._yBarGap).toHaveBeenCalled();
-            expect(seriesUnderTest._yBarSize).toHaveBeenCalled();
+            expect(seriesUnderTest._getBarGap).toHaveBeenCalled();
+            expect(seriesUnderTest._getBarSize).toHaveBeenCalled();
             expect(seriesUnderTest.y._pointSize).toHaveBeenCalled();
         });
 

@@ -38,8 +38,8 @@
             seriesUnderTest.x = mockAxis;
 
             // Set up series mocks
-            spyOn(seriesUnderTest, "_xBarGap").andReturn(barGap);
-            spyOn(seriesUnderTest, "_xBarSize").andReturn(barSize);
+            spyOn(seriesUnderTest, "_getBarGap").andReturn(barGap);
+            spyOn(seriesUnderTest, "_getBarSize").andReturn(barSize);
 
             // Set up validation spies
             spyOn(dimple.validation, "_isDefined").andReturn(true);
@@ -114,8 +114,8 @@
                 .toEqual(scaleReturn + barGap + (offset + 0.5) * (barSize / innerBarCount));
             expect(seriesUnderTest.x._hasMultipleCategories).toHaveBeenCalled();
             expect(seriesUnderTest.x._scaleValue).toHaveBeenCalledWith(unscaledValue);
-            expect(seriesUnderTest._xBarGap).toHaveBeenCalled();
-            expect(seriesUnderTest._xBarSize).toHaveBeenCalled();
+            expect(seriesUnderTest._getBarGap).toHaveBeenCalled();
+            expect(seriesUnderTest._getBarSize).toHaveBeenCalled();
         });
 
         it("Calculates middle bar position for single categories", function() {
