@@ -5,78 +5,62 @@
 
         // Calculate the centre x position
         cx: function (d, chart, series) {
-            console.log(d);
             console.log(chart);
-            console.log(series);
             return series._getCx(d.cx, 1 / d.width, d.xOffset);
         },
 
         // Calculate the centre y position
         cy: function (d, chart, series) {
-            console.log(d);
             console.log(chart);
-            console.log(series);
             return series._getCy(d.cy, 1 / d.height, d.yOffset);
         },
 
         // Calculate the radius
         r: function (d, series) {
-            console.log(d);
-            console.log(series);
             return series._getRadius(d.r);
         },
 
         // Calculate the x gap for bar type charts
         xGap: function (chart, series) {
             console.log(chart);
-            console.log(series);
             return series._getBarGap("x");
         },
 
         // Calculate the x gap for clusters within bar type charts
         xClusterGap: function (d, chart, series) {
-            console.log(d);
             console.log(chart);
-            console.log(series);
             return series._getInnerBarGap("x", 1 / d.width);
         },
 
         // Calculate the y gap for bar type charts
         yGap: function (chart, series) {
             console.log(chart);
-            console.log(series);
             return series._getBarGap("y");
         },
 
         // Calculate the y gap for clusters within bar type charts
         yClusterGap: function (d, chart, series) {
-            console.log(d);
             console.log(chart);
-            console.log(series);
             return series._getInnerBarGap("y", 1 / d.height);
         },
 
         // Calculate the top left x position for bar type charts
         x: function (d, chart, series) {
-            console.log(d);
+//            var returnX = 0;
+//            if (series.x._hasTimeField()) {
+//                returnX = series.x._scale(d.x) - (dimple._helpers.width(d, chart, series) / 2);
+//            } else if (series.x.measure !== null && series.x.measure !== undefined) {
+//                returnX = series.x._scale(d.x);
+//            } else {
+//                returnX = series.x._scale(d.x) + dimple._helpers.xGap(chart, series) + (d.xOffset * (dimple._helpers.width(d, chart, series) + 2 * dimple._helpers.xClusterGap(d, chart, series))) + dimple._helpers.xClusterGap(d, chart, series);
+//            }
+//            return returnX;
             console.log(chart);
-            console.log(series);
-            var returnX = 0;
-            if (series.x._hasTimeField()) {
-                returnX = series.x._scale(d.x) - (dimple._helpers.width(d, chart, series) / 2);
-            } else if (series.x.measure !== null && series.x.measure !== undefined) {
-                returnX = series.x._scale(d.x);
-            } else {
-                returnX = series.x._scale(d.x) + dimple._helpers.xGap(chart, series) + (d.xOffset * (dimple._helpers.width(d, chart, series) + 2 * dimple._helpers.xClusterGap(d, chart, series))) + dimple._helpers.xClusterGap(d, chart, series);
-            }
-            return returnX;
+            return series._getX(d.x, 1 / d.width, d.xOffset);
         },
 
         // Calculate the top left y position for bar type charts
         y: function (d, chart, series) {
-            console.log(d);
-            console.log(chart);
-            console.log(series);
             var returnY = 0;
             if (series.y._hasTimeField()) {
                 returnY = series.y._scale(d.y) - (dimple._helpers.height(d, chart, series) / 2);
@@ -90,9 +74,6 @@
 
         // Calculate the width for bar type charts
         width: function (d, chart, series) {
-            console.log(d);
-            console.log(chart);
-            console.log(series);
             var returnWidth = 0;
             if (series.x.measure !== null && series.x.measure !== undefined) {
                 returnWidth = Math.abs(series.x._scale((d.x < 0 ? d.x - d.width : d.x + d.width)) - series.x._scale(d.x));
@@ -106,9 +87,6 @@
 
         // Calculate the height for bar type charts
         height: function (d, chart, series) {
-            console.log(d);
-            console.log(chart);
-            console.log(series);
             var returnHeight = 0;
             if (series.y._hasTimeField()) {
                 returnHeight = series.y.floatingBarWidth;
@@ -122,9 +100,6 @@
 
         // Calculate the opacity for series
         opacity: function (d, chart, series) {
-            console.log(d);
-            console.log(chart);
-            console.log(series);
             var returnOpacity = 0;
             if (series.c !== null && series.c !== undefined) {
                 returnOpacity = d.opacity;
@@ -136,9 +111,6 @@
 
         // Calculate the fill coloring for series
         fill: function (d, chart, series) {
-            console.log(d);
-            console.log(chart);
-            console.log(series);
             var returnFill = 0;
             if (series.c !== null && series.c !== undefined) {
                 returnFill = d.fill;
@@ -150,9 +122,6 @@
 
         // Calculate the stroke coloring for series
         stroke: function (d, chart, series) {
-            console.log(d);
-            console.log(chart);
-            console.log(series);
             var stroke = 0;
             if (series.c !== null && series.c !== undefined) {
                 stroke = d.stroke;
