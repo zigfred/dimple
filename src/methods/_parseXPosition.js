@@ -1,6 +1,8 @@
-    // Copyright: 2014 PMSI-AlignAlytics
-    // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/methods/_parseXPosition.js
+// Copyright: 2014 PMSI-AlignAlytics
+// License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
+// Source: /src/methods/_parseXPosition.js
+(function () {
+    "use strict";
     dimple._parseXPosition = function (value, parent) {
         var returnValue = 0,
             values = value.toString().split(",");
@@ -19,3 +21,4 @@
         }, this);
         return returnValue;
     };
+}());

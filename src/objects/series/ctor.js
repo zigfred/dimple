@@ -1,9 +1,10 @@
-    // Copyright: 2014 PMSI-AlignAlytics
-    // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/objects/series/begin.js
-    // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.series
+// Copyright: 2014 PMSI-AlignAlytics
+// License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
+// Source: /src/objects/series/ctor.js
+// Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.series
+(function () {
+    "use strict";
     dimple.series = function (chart, categoryFields, xAxis, yAxis, zAxis, colorAxis, plotFunction, aggregateFunction, stacked) {
-
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.series#wiki-chart
         this.chart = chart;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.series#wiki-x
@@ -30,10 +31,11 @@
         this.lineWeight = 2;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.series#wiki-lineMarkers
         this.lineMarkers = false;
-
         // Any event handlers joined to this series
         this._eventHandlers = [];
         // The series positioning information
         this._positionData = [];
         // The order definition array
         this._orderRules = [];
+    };
+}());

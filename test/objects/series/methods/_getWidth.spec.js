@@ -2,17 +2,20 @@
 (function () {
     "use strict";
 
-    describe("dimple.series._getCx", function() {
+    describe("dimple.series._getWidth", function() {
 
         var seriesUnderTest = null,
             // Mock return values as ascending primes to avoid coincidental passes
-            unscaledValue = 2,
+            negativeUnscaledX = -2,
+            unscaledX = 2,
             scaleReturn = 3,
             innerBarCount = 7,
-            offset = 11,
+            innerBarGap = 11,
             barGap = 13,
             pointSize = 17,
-            barSize = 19;
+            barSize = 19,
+            floatingBarWidth = 23,
+            unscaledWidth = 29;
 
         beforeEach(function () {
             // The axis to return mock values while testing
@@ -36,10 +39,12 @@
             // Instantiate the series to test
             seriesUnderTest = new dimple.series();
             seriesUnderTest.x = mockAxis;
+            seriesUnderTest.x.floatingBarWidth = floatingBarWidth;
 
             // Set up series mocks
             spyOn(seriesUnderTest, "_getBarGap").andReturn(barGap);
             spyOn(seriesUnderTest, "_getBarSize").andReturn(barSize);
+            spyOn(seriesUnderTest, "_getInnerBarGap").andReturn(innerBarGap);
 
             // Set up validation spies
             spyOn(dimple.validation, "_isDefined").andReturn(true);
@@ -50,42 +55,51 @@
 
         it("Validates required members", function () {
             try {
-                seriesUnderTest._getCx(unscaledValue);
+                seriesUnderTest._getWidth(unscaledX, unscaledWidth, innerBarCount);
             } catch (ignore) {
                 /* validation is not under test */
             }
             expect(dimple.validation._isDefined).toHaveBeenCalledWith("x axis", seriesUnderTest.x);
         });
 
-        it("Validates required parameters", function () {
+        it("Doesn't validate x and width for time series", function () {
+            seriesUnderTest.x._hasTimeField.andReturn(true);
             try {
-                seriesUnderTest._getCx(unscaledValue);
+                seriesUnderTest._getWidth(unscaledX, unscaledWidth, innerBarCount);
             } catch (ignore) { /* validation is not under test */ }
-            expect(dimple.validation._isDefined).toHaveBeenCalledWith("unscaledValue", unscaledValue);
+            expect(dimple.validation._isDefined).not.toHaveBeenCalledWith("unscaledX", unscaledX);
+            expect(dimple.validation._isDefined).not.toHaveBeenCalledWith("unscaledWidth", unscaledWidth);
         });
 
-        it("Does not validate optional parameters for axes other than multiple category", function() {
+        it("Validates x and width for axes other than time series", function () {
             try {
-                seriesUnderTest._getCx(unscaledValue, innerBarCount, offset);
+                seriesUnderTest._getWidth(unscaledX, unscaledWidth, innerBarCount);
+            } catch (ignore) { /* validation is not under test */ }
+            expect(dimple.validation._isDefined).toHaveBeenCalledWith("unscaledX", unscaledX);
+            expect(dimple.validation._isDefined).toHaveBeenCalledWith("unscaledWidth", unscaledWidth);
+        });
+
+        it("Does not validate inner bar count for axes other than multiple category", function() {
+            try {
+                seriesUnderTest._getWidth(unscaledX, unscaledWidth, innerBarCount);
             } catch (ignore) {
                 /* validation is not under test */
             }
             expect(dimple.validation._isPositiveNumber).not.toHaveBeenCalled();
         });
 
-        it("Validates optional parameters for multiple category axes", function() {
+        it("Validates inner bar count for multiple category axes", function() {
             seriesUnderTest.x._hasMultipleCategories.andReturn(true);
             try {
-                seriesUnderTest._getCx(unscaledValue, innerBarCount, offset);
+                seriesUnderTest._getWidth(unscaledX, unscaledWidth, innerBarCount);
             } catch (ignore) {
                 /* validation is not under test */
             }
             expect(dimple.validation._isPositiveNumber).toHaveBeenCalledWith("innerBarCount", innerBarCount);
-            expect(dimple.validation._isPositiveNumber).toHaveBeenCalledWith("offset", offset);
         });
 
         it("Throws an exception if axis returns false for all types", function() {
-            expect(function () { seriesUnderTest._getCx(unscaledValue); })
+            expect(function () { seriesUnderTest._getWidth(unscaledX, unscaledWidth, innerBarCount); })
                 .toThrow(dimple.exception.unsupportedAxisState("x"));
             expect(seriesUnderTest.x._hasMeasure).toHaveBeenCalled();
             expect(seriesUnderTest.x._hasCategories).toHaveBeenCalled();
@@ -93,37 +107,40 @@
             expect(seriesUnderTest.x._hasTimeField).toHaveBeenCalled();
         });
 
-        it("Uses the x axis scaling for measure axes", function() {
+        it("Returns correct value for negative values on measure axes", function() {
             seriesUnderTest.x._hasMeasure.andReturn(true);
-            expect(seriesUnderTest._getCx(unscaledValue)).toEqual(scaleReturn);
+            expect(seriesUnderTest._getWidth(negativeUnscaledX, unscaledWidth, innerBarCount)).toEqual(scaleReturn - scaleReturn);
             expect(seriesUnderTest.x._hasMeasure).toHaveBeenCalled();
-            expect(seriesUnderTest.x._scaleValue).toHaveBeenCalledWith(unscaledValue);
+            expect(seriesUnderTest.x._scaleValue).toHaveBeenCalledWith(negativeUnscaledX - unscaledWidth);
+            expect(seriesUnderTest.x._scaleValue).toHaveBeenCalledWith(negativeUnscaledX);
         });
 
-        it("Uses the x axis scaling for time axes", function() {
+        it("Returns correct value for positive values on measure axes", function() {
+            seriesUnderTest.x._hasMeasure.andReturn(true);
+            expect(seriesUnderTest._getWidth(unscaledX, unscaledWidth, innerBarCount)).toEqual(scaleReturn - scaleReturn);
+            expect(seriesUnderTest.x._hasMeasure).toHaveBeenCalled();
+            expect(seriesUnderTest.x._scaleValue).toHaveBeenCalledWith(unscaledX + unscaledWidth);
+            expect(seriesUnderTest.x._scaleValue).toHaveBeenCalledWith(unscaledX);
+        });
+
+        it("Returns floating bar width for time axes", function() {
             seriesUnderTest.x._hasTimeField.andReturn(true);
-            expect(seriesUnderTest._getCx(unscaledValue)).toEqual(scaleReturn);
+            expect(seriesUnderTest._getWidth(unscaledX, unscaledWidth, innerBarCount)).toEqual(floatingBarWidth);
             expect(seriesUnderTest.x._hasTimeField).toHaveBeenCalled();
-            expect(seriesUnderTest.x._scaleValue).toHaveBeenCalledWith(unscaledValue);
         });
 
-        it("Calculates middle bar position for multiple categories", function() {
+        it("Returns inner bar width for multiple categories", function() {
             seriesUnderTest.x._hasMultipleCategories.andReturn(true);
-            expect(seriesUnderTest._getCx(unscaledValue, innerBarCount, offset))
-                .toEqual(scaleReturn + barGap + (offset + 0.5) * (barSize / innerBarCount));
+            expect(seriesUnderTest._getWidth(unscaledX, unscaledWidth, innerBarCount)).toEqual(barSize / innerBarCount - 2 * innerBarGap);
             expect(seriesUnderTest.x._hasMultipleCategories).toHaveBeenCalled();
-            expect(seriesUnderTest.x._scaleValue).toHaveBeenCalledWith(unscaledValue);
-            expect(seriesUnderTest._getBarGap).toHaveBeenCalled();
-            expect(seriesUnderTest._getBarSize).toHaveBeenCalled();
+            expect(seriesUnderTest._getBarSize).toHaveBeenCalledWith("x");
+            expect(seriesUnderTest._getInnerBarGap).toHaveBeenCalledWith("x", innerBarCount);
         });
 
-        it("Calculates middle bar position for single categories", function() {
+        it("Returns bar size for single categories", function() {
             seriesUnderTest.x._hasCategories.andReturn(true);
-            expect(seriesUnderTest._getCx(unscaledValue))
-                .toEqual(scaleReturn + pointSize / 2);
-            expect(seriesUnderTest.x._hasCategories).toHaveBeenCalled();
-            expect(seriesUnderTest.x._scaleValue).toHaveBeenCalledWith(unscaledValue);
-            expect(seriesUnderTest.x._pointSize).toHaveBeenCalled();
+            expect(seriesUnderTest._getWidth(unscaledX, unscaledWidth, innerBarCount)).toEqual(barSize);
+            expect(seriesUnderTest._getBarSize).toHaveBeenCalledWith("x");
         });
 
     });

@@ -1,6 +1,8 @@
-    // Copyright: 2014 PMSI-AlignAlytics
-    // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/methods/_parentWidth.js
+// Copyright: 2014 PMSI-AlignAlytics
+// License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
+// Source: /src/methods/_parentWidth.js
+(function () {
+    "use strict";
     dimple._parentWidth = function (parent) {
         // This one seems to work in Chrome - good old Chrome!
         var returnValue = parent.offsetWidth;
@@ -24,3 +26,4 @@
         }
         return returnValue;
     };
+}());

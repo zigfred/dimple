@@ -1,6 +1,8 @@
-    // Copyright: 2014 PMSI-AlignAlytics
-    // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/objects/plot/bubble.js
+// Copyright: 2014 PMSI-AlignAlytics
+// License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
+// Source: /src/objects/plot/bubble.js
+(function () {
+    "use strict";
     dimple.plot.bubble = {
 
         // By default the bubble values are not stacked
@@ -299,4 +301,6 @@
             }
         }
     };
+}());
+
 

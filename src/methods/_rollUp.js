@@ -1,6 +1,8 @@
-    // Copyright: 2014 PMSI-AlignAlytics
-    // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/methods/_rollUp.js
+// Copyright: 2014 PMSI-AlignAlytics
+// License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
+// Source: /src/methods/_rollUp.js
+(function () {
+    "use strict";
     dimple._rollUp = function (data, fields, includeFields) {
 
         var returnList = [];
@@ -57,3 +59,4 @@
         // Return the flattened list
         return returnList;
     };
+}());

@@ -1,6 +1,8 @@
-    // Copyright: 2014 PMSI-AlignAlytics
-    // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/objects/plot/bar.js
+// Copyright: 2014 PMSI-AlignAlytics
+// License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
+// Source: /src/objects/plot/bar.js
+(function () {
+    "use strict";
     dimple.plot.bar = {
 
         // By default the bar series is stacked if there are series categories
@@ -291,4 +293,6 @@
             }
         }
     };
+}());
+
 

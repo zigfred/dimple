@@ -1,9 +1,10 @@
+(function () {
+    "use strict";
     // Copyright: 2014 PMSI-AlignAlytics
     // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/objects/chart/begin.js
+    // Source: /src/objects/chart/ctor.js
     // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart
     dimple.chart = function (svg, data) {
-
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-svg
         this.svg = svg;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-x
@@ -30,7 +31,21 @@
         this.titleShape = null;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-shapes
         this.shapes = null;
-
+        // Set the default colour palatte
+        this.defaultColors = [
+            new dimple.color("#80B1D3"), // Blue
+            new dimple.color("#FB8072"), // Red
+            new dimple.color("#FDB462"), // Orange
+            new dimple.color("#B3DE69"), // Green
+            new dimple.color("#FFED6F"), // Yellow
+            new dimple.color("#BC80BD"), // Purple
+            new dimple.color("#8DD3C7"), // Turquoise
+            new dimple.color("#CCEBC5"), // Pale Blue
+            new dimple.color("#FFFFB3"), // Pale Yellow
+            new dimple.color("#BEBADA"), // Lavender
+            new dimple.color("#FCCDE5"), // Pink
+            new dimple.color("#D9D9D9")  // Grey
+        ];
         // The group within which to put all of this chart's objects
         this._group = svg.append("g");
         // The group within which to put tooltips.  This is not initialised here because
@@ -41,3 +56,5 @@
         this._assignedColors = {};
         // The next colour index to use, this value is cycled around for all default colours
         this._nextColor = 0;
+    };
+}());

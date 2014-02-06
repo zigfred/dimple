@@ -1,9 +1,10 @@
-    // Copyright: 2014 PMSI-AlignAlytics
-    // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/objects/legend/begin.js
-    // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.legend
+// Copyright: 2014 PMSI-AlignAlytics
+// License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
+// Source: /src/objects/legend/ctor.js
+// Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.legend
+(function () {
+    "use strict";
     dimple.legend = function (chart, x, y, width, height, horizontalAlign, series) {
-
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.legend#wiki-chart
         this.chart = chart;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.legend#wiki-series
@@ -20,3 +21,5 @@
         this.horizontalAlign = horizontalAlign;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.legend#wiki-shapes
         this.shapes = null;
+    };
+}());

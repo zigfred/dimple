@@ -1,9 +1,10 @@
-    // Copyright: 2014 PMSI-AlignAlytics
-    // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/objects/axis/begin.js
-    // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis
+// Copyright: 2014 PMSI-AlignAlytics
+// License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
+// Source: /src/objects/axis/ctor.js
+// Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis
+(function () {
+    "use strict";
     dimple.axis = function (chart, position, categoryFields, measure, timeField) {
-
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#wiki-chart
         this.chart = chart;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#wiki-position
@@ -46,18 +47,19 @@
         this.useLog = false;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#wiki-logBase
         this.logBase = 10;
-
         // The scale determined by the update method
         this._scale = null;
-        // The minimum and maximum axis values
+        // The minimum axis value
         this._min = 0;
+        // The maximum axis value
         this._max = 0;
-        // Chart origin before and after an update.  This helps
-        // with transitions
+        // Chart origin before an update.  This helps with transitions
         this._previousOrigin = null;
+        // Chart origin after an update.  This helps with transitions
         this._origin = null;
         // The order definition array
         this._orderRules = [];
         // The group order definition array
         this._groupOrderRules = [];
-
+    };
+}());

@@ -1,6 +1,8 @@
-    // Copyright: 2014 PMSI-AlignAlytics
-    // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/objects/chart/methods/_getOrderedList.js
+// Copyright: 2014 PMSI-AlignAlytics
+// License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
+// Source: /src/objects/chart/methods/_getOrderedList.js
+(function () {
+    "use strict";
     dimple._getOrderedList = function (data, mainField, levelDefinitions) {
         var rollupData = [],
             sortStack = [],
@@ -125,4 +127,4 @@
         // Return the ordered list
         return finalArray;
     };
-
+}());

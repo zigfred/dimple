@@ -1,6 +1,8 @@
-    // Copyright: 2014 PMSI-AlignAlytics
-    // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/methods/_parentHeight.js
+// Copyright: 2014 PMSI-AlignAlytics
+// License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
+// Source: /src/methods/_parentHeight.js
+(function () {
+    "use strict";
     dimple._parentHeight = function (parent) {
         // This one seems to work in Chrome - good old Chrome!
         var returnValue = parent.offsetHeight;
@@ -24,3 +26,4 @@
         }
         return returnValue;
     };
+}());

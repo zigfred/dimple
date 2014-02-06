@@ -1,7 +1,9 @@
-    // Copyright: 2014 PMSI-AlignAlytics
-    // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/objects/storyboard/begin.js
-    // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.storyboard
+// Copyright: 2014 PMSI-AlignAlytics
+// License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
+// Source: /src/objects/storyboard/ctor.js
+// Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.storyboard
+(function () {
+    "use strict";
     dimple.storyboard = function (chart, categoryFields) {
 
         // Handle an individual string as an array
@@ -32,3 +34,5 @@
         this._cachedCategoryFields = [];
         // The rules for ordering the storyboard
         this._orderRules = [];
+    };
+}());

@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     "use strict";
     // Project configuration.
     grunt.initConfig({
@@ -6,32 +6,24 @@ module.exports = function(grunt) {
         concat: {
             dist: {
                 src: [
-                    "src/begin.js",
-                    "src/objects/axis/begin.js",
-                    "src/objects/axis/methods/*.js",
-                    "src/objects/axis/end.js",
-                    "src/objects/chart/begin.js",
-                    "src/objects/chart/methods/*.js",
-                    "src/objects/chart/end.js",
-                    "src/objects/color/begin.js",
-                    "src/objects/color/end.js",
-                    "src/objects/eventArgs/begin.js",
-                    "src/objects/eventArgs/end.js",
-                    "src/objects/legend/begin.js",
-                    "src/objects/legend/methods/*.js",
-                    "src/objects/legend/end.js",
-                    "src/objects/series/begin.js",
-                    "src/objects/series/methods/*.js",
-                    "src/objects/series/end.js",
-                    "src/objects/storyboard/begin.js",
-                    "src/objects/storyboard/methods/*.js",
-                    "src/objects/storyboard/end.js",
-                    "src/objects/aggregateMethod/*.js",
-                    "src/objects/plot/*.js",
-                    "src/objects/exception/*.js",
-                    "src/objects/validation/*.js",
+                    "src/static.js",
                     "src/methods/*.js",
-                    "src/end.js"
+                    "src/objects/aggregateMethod/*.js",
+                    "src/objects/axis/ctor.js",
+                    "src/objects/axis/methods/*.js",
+                    "src/objects/chart/ctor.js",
+                    "src/objects/chart/methods/*.js",
+                    "src/objects/color/*.js",
+                    "src/objects/eventArgs/*.js",
+                    "src/objects/exception/*.js",
+                    "src/objects/legend/ctor.js",
+                    "src/objects/legend/methods/*.js",
+                    "src/objects/plot/*.js",
+                    "src/objects/series/ctor.js",
+                    "src/objects/series/methods/*.js",
+                    "src/objects/storyboard/ctor.js",
+                    "src/objects/storyboard/methods/*.js",
+                    "src/objects/validation/*.js"
                 ],
                 dest: 'dist/<%= pkg.name %>.v<%= pkg.version %>.js'
             },
@@ -59,7 +51,7 @@ module.exports = function(grunt) {
             files: [
                 'Gruntfile.js',
                 'test/**/*.spec.js',
-                'dist/<%= pkg.name %>.v<%= pkg.version %>.js'
+                "src/**/*.js"
             ],
             directives: {
                 browser: true,
@@ -131,13 +123,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-jslint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-karma');
 
-    // Propogate version into relevant files
-    grunt.registerMultiTask('prop', 'Propagate Versions.', function() {
+    // Propagate version into relevant files
+    grunt.registerMultiTask('prop', 'Propagate Versions.', function () {
         var options = this.options(),
             outPath = options.dest,
             tag = options.tag,
@@ -146,8 +137,8 @@ module.exports = function(grunt) {
         grunt.log.writeln("");
         grunt.log.writeln("Replacing " + tag + " with " + version);
         grunt.log.writeln("------------------------------------------------------");
-        this.files.forEach(function(f) {
-            f.src.filter(function(filepath) {
+        this.files.forEach(function (f) {
+            f.src.filter(function (filepath) {
                 var result = true;
                 if (!grunt.file.exists(filepath)) {
                     grunt.log.warn('File "' + filepath + '" not found.');
@@ -167,7 +158,7 @@ module.exports = function(grunt) {
     });
 
     // Default tasks
-    grunt.registerTask('default', ['concat', 'jslint', 'uglify', 'connect', 'prop']);
+    grunt.registerTask('default', ['jslint', 'concat', 'uglify', 'connect', 'prop']);
     grunt.registerTask('test:unit', ['concat:test', 'karma:unit']);
     grunt.registerTask('test', ['karma:continuous:start', 'watch']);
 

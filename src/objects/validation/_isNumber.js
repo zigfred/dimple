@@ -1,6 +1,8 @@
-    // Copyright: 2014 PMSI-AlignAlytics
-    // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/objects/validation/_isNumber.js
+// Copyright: 2014 PMSI-AlignAlytics
+// License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
+// Source: /src/objects/validation/_isNumber.js
+(function () {
+    "use strict";
     dimple.validation._isNumber = function (name, value) {
         var expected = "a finite numeric value";
         if (value === undefined) {
@@ -19,3 +21,5 @@
             return true;
         }
     };
+}());
+

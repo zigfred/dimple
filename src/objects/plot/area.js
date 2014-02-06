@@ -1,7 +1,10 @@
-    // Copyright: 2014 PMSI-AlignAlytics
-    // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/objects/plot/area.js
+// Copyright: 2014 PMSI-AlignAlytics
+// License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
+// Source: /src/objects/plot/area.js
+(function () {
+    "use strict";
     dimple.plot.area = {
+
         stacked: true,
 
         supportedAxes: ["x", "y", "c"],
@@ -398,4 +401,6 @@
             }
         }
     };
+}());
+
 

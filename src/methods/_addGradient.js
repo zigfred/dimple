@@ -1,6 +1,8 @@
-    // Copyright: 2014 PMSI-AlignAlytics
-    // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/methods/_addGradient.js
+// Copyright: 2014 PMSI-AlignAlytics
+// License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
+// Source: /src/methods/_addGradient.js
+(function () {
+    "use strict";
     dimple._addGradient = function (seriesValue, id, categoryAxis, data, chart, duration, colorProperty) {
 
         var grad = chart._group.select("#" + id),
@@ -58,4 +60,4 @@
                 .attr("stop-color", function(d) { return d.color; });
         }
     };
-
+}());

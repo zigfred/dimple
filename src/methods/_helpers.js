@@ -1,6 +1,8 @@
-    // Copyright: 2014 PMSI-AlignAlytics
-    // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
-    // Source: /src/methods/_helpers.js
+// Copyright: 2014 PMSI-AlignAlytics
+// License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
+// Source: /src/methods/_helpers.js
+(function () {
+    "use strict";
     dimple._helpers = {
 
         // Calculate the centre x position
@@ -46,56 +48,26 @@
 
         // Calculate the top left x position for bar type charts
         x: function (d, chart, series) {
-//            var returnX = 0;
-//            if (series.x._hasTimeField()) {
-//                returnX = series.x._scale(d.x) - (dimple._helpers.width(d, chart, series) / 2);
-//            } else if (series.x.measure !== null && series.x.measure !== undefined) {
-//                returnX = series.x._scale(d.x);
-//            } else {
-//                returnX = series.x._scale(d.x) + dimple._helpers.xGap(chart, series) + (d.xOffset * (dimple._helpers.width(d, chart, series) + 2 * dimple._helpers.xClusterGap(d, chart, series))) + dimple._helpers.xClusterGap(d, chart, series);
-//            }
-//            return returnX;
             console.log(chart);
             return series._getX(d.x, 1 / d.width, d.xOffset);
         },
 
         // Calculate the top left y position for bar type charts
         y: function (d, chart, series) {
-            var returnY = 0;
-            if (series.y._hasTimeField()) {
-                returnY = series.y._scale(d.y) - (dimple._helpers.height(d, chart, series) / 2);
-            } else if (series.y.measure !== null && series.y.measure !== undefined) {
-                returnY = series.y._scale(d.y);
-            } else {
-                returnY = (series.y._scale(d.y) - (chart._heightPixels() / series.y._max)) + dimple._helpers.yGap(chart, series) + (d.yOffset * (dimple._helpers.height(d, chart, series) + 2 * dimple._helpers.yClusterGap(d, chart, series))) + dimple._helpers.yClusterGap(d, chart, series);
-            }
-            return returnY;
+            console.log(chart);
+            return series._getY(d.y, 1 / d.height, d.yOffset);
         },
 
         // Calculate the width for bar type charts
         width: function (d, chart, series) {
-            var returnWidth = 0;
-            if (series.x.measure !== null && series.x.measure !== undefined) {
-                returnWidth = Math.abs(series.x._scale((d.x < 0 ? d.x - d.width : d.x + d.width)) - series.x._scale(d.x));
-            } else if (series.x._hasTimeField()) {
-                returnWidth = series.x.floatingBarWidth;
-            } else {
-                returnWidth = d.width * ((chart._widthPixels() / series.x._max) - (dimple._helpers.xGap(chart, series) * 2)) - (dimple._helpers.xClusterGap(d, chart, series) * 2);
-            }
-            return returnWidth;
+            console.log(chart);
+            return series._getWidth(d.x, d.width, 1 / d.width);
         },
 
         // Calculate the height for bar type charts
         height: function (d, chart, series) {
-            var returnHeight = 0;
-            if (series.y._hasTimeField()) {
-                returnHeight = series.y.floatingBarWidth;
-            } else if (series.y.measure !== null && series.y.measure !== undefined) {
-                returnHeight = Math.abs(series.y._scale(d.y) - series.y._scale((d.y <= 0 ? d.y + d.height : d.y - d.height)));
-            } else {
-                returnHeight = d.height * ((chart._heightPixels() / series.y._max) - (dimple._helpers.yGap(chart, series) * 2)) - (dimple._helpers.yClusterGap(d, chart, series) * 2);
-            }
-            return returnHeight;
+            console.log(chart);
+            return series._getHeight(d.y, d.height, 1 / d.height);
         },
 
         // Calculate the opacity for series
@@ -132,4 +104,4 @@
         }
 
     };
-
+}());
