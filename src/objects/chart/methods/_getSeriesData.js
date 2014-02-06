@@ -3,15 +3,15 @@
 // Source: /src/objects/chart/methods/_getSeriesData.js
 (function () {
     "use strict";
-    // Create a dataset containing positioning information for every series
-    dimple.chart.prototype._getSeriesData = function () {
+    // Create a data set containing positioning information for every series
+    dimple.Chart.prototype._getSeriesData = function () {
         // If there are series
         if (this.series !== null && this.series !== undefined) {
             // Iterate all the series
             this.series.forEach(function (series) {
                 // The data for this series
                 var returnData = [],
-                    // Handle multiple category values by iterating the fields in the row and concatonate the values
+                    // Handle multiple category values by iterating the fields in the row and concatenate the values
                     // This is repeated for each axis using a small anon function
                     getField = function (axis, row) {
                         var returnField = [];

@@ -4,7 +4,7 @@
 (function () {
     "use strict";
     // Access the pixel value of the width of the legend area
-    dimple.legend.prototype._widthPixels = function () {
+    dimple.Legend.prototype._widthPixels = function () {
         return dimple._parseXPosition(this.width, this.chart.svg.node());
     };
 }());

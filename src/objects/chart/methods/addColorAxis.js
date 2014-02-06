@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addColorAxis
 (function () {
     "use strict";
-    dimple.chart.prototype.addColorAxis = function (measure, colors) {
+    dimple.Chart.prototype.addColorAxis = function (measure, colors) {
         var colorAxis = this.addAxis("c", null, measure);
         colorAxis.colors = (colors === null || colors === undefined ? null : [].concat(colors));
         return colorAxis;

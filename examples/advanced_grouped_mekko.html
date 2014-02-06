@@ -3,13 +3,13 @@
 <!----------------------------------------------------------------->
 <div id="chartContainer">
   <script src="/lib/d3.v3.min.js"></script>
-  <script src="/dist/dimple.v1.2.0.js"></script>
+  <script src="/dist/dimple.v2.0.0.js"></script>
   <script type="text/javascript">
     var svg = dimple.newSvg("#chartContainer", 590, 400);
     d3.tsv("/data/example_data.tsv", function (data) {
     
       // Create and position the chart
-      var myChart = new dimple.chart(svg, data);
+      var myChart = new dimple.Chart(svg, data);
       myChart.setBounds(65, 50, 505, 310)
 
       // Add a Grouped Mekko Axis.  This will show Brands grouped by owners

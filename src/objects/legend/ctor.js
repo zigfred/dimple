@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.legend
 (function () {
     "use strict";
-    dimple.legend = function (chart, x, y, width, height, horizontalAlign, series) {
+    dimple.Legend = function (chart, x, y, width, height, horizontalAlign, series) {
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.legend#wiki-chart
         this.chart = chart;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.legend#wiki-series

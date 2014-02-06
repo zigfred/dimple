@@ -3,7 +3,7 @@
 <!----------------------------------------------------------------->
 <div id="chartContainer">
   <script src="/lib/d3.v3.min.js"></script>
-  <script src="/dist/dimple.v1.2.0.js"></script>
+  <script src="/dist/dimple.v2.0.0.js"></script>
   <script type="text/javascript">
     var svg = dimple.newSvg("#chartContainer", 590, 400);
     d3.tsv("/data/example_data.tsv", function (data) {
@@ -48,7 +48,7 @@
                 .text(chartData[0].Month.substring(0, 3));
           
           // Create a chart at the correct point in the trellis
-          var myChart = new dimple.chart(svg, chartData);
+          var myChart = new dimple.Chart(svg, chartData);
           myChart.setBounds(
             left + (col * (width + inMarg)),
             top + (row * (height + inMarg)),

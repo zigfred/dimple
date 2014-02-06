@@ -3,7 +3,7 @@
 // Source: /src/objects/axis/methods/_scaleValue.js
 (function () {
     "use strict";
-    dimple.axis.prototype._scaleValue = function (unscaledValue) {
+    dimple.Axis.prototype._scaleValue = function (unscaledValue) {
         var returnValue = 0;
         if (this._scale !== null && this._scale !== undefined) {
             returnValue = this._scale(unscaledValue);

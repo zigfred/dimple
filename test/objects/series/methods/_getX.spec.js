@@ -35,7 +35,7 @@
             mockAxis._pointSize.andReturn(pointSize);
 
             // Instantiate the series to test
-            seriesUnderTest = new dimple.series();
+            seriesUnderTest = new dimple.Series();
             seriesUnderTest.x = mockAxis;
             seriesUnderTest.x.floatingBarWidth = floatingBarWidth;
 

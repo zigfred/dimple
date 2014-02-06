@@ -3,7 +3,7 @@
 // Source: /src/objects/series/methods/_dropLineOrigin.js
 (function () {
     "use strict";
-    dimple.series.prototype._dropLineOrigin = function() {
+    dimple.Series.prototype._dropLineOrigin = function () {
         // Get the origin co-ordinates for axis drop lines
         var xIndex = 0,
             yIndex = 0,

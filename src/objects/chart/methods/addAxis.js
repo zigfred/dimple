@@ -4,13 +4,13 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addAxis
 (function () {
     "use strict";
-    dimple.chart.prototype.addAxis = function (position, categoryFields, measure, timeField) {
+    dimple.Chart.prototype.addAxis = function (position, categoryFields, measure, timeField) {
         // Convert the passed category fields to an array in case a single string is sent
         if (categoryFields !== null && categoryFields !== undefined) {
             categoryFields = [].concat(categoryFields);
         }
         // Create the axis object based on the passed parameters
-        var axis = new dimple.axis(
+        var axis = new dimple.Axis(
             this,
             position,
             categoryFields,

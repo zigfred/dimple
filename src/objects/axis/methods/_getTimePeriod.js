@@ -3,7 +3,7 @@
 // Source: /src/objects/axis/methods/_getTimePeriod.js
 (function () {
     "use strict";
-    dimple.axis.prototype._getTimePeriod = function () {
+    dimple.Axis.prototype._getTimePeriod = function () {
         // A javascript date object
         var outPeriod = this.timePeriod,
             maxPeriods = 30,

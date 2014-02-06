@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.storyboard#wiki-addOrderRule
 (function () {
     "use strict";
-    dimple.storyboard.prototype.addOrderRule = function (ordering, desc) {
+    dimple.Storyboard.prototype.addOrderRule = function (ordering, desc) {
         this._orderRules.push({ ordering : ordering, desc : desc });
     };
 }());

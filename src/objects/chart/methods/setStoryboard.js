@@ -4,9 +4,9 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-setStoryboard
 (function () {
     "use strict";
-    dimple.chart.prototype.setStoryboard = function (categoryFields, tickHandler) {
+    dimple.Chart.prototype.setStoryboard = function (categoryFields, tickHandler) {
         // Create and assign the storyboard
-        this.storyboard = new dimple.storyboard(this, categoryFields);
+        this.storyboard = new dimple.Storyboard(this, categoryFields);
         // Set the event handler
         if (tickHandler !== null && tickHandler !== undefined) {
             this.storyboard.onTick = tickHandler;

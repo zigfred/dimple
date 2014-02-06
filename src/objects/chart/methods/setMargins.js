@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-setMargins
 (function () {
     "use strict";
-    dimple.chart.prototype.setMargins = function (left, top, right, bottom) {
+    dimple.Chart.prototype.setMargins = function (left, top, right, bottom) {
         // Set the bounds here, functions below will be used for access
         this.x = left;
         this.y = top;

@@ -3,7 +3,7 @@
 // Source: /src/objects/storyboard/methods/_getCategories.js
 (function () {
     "use strict";
-    dimple.storyboard.prototype._getCategories = function() {
+    dimple.Storyboard.prototype._getCategories = function () {
         if (this._categoryFields !== this._cachedCategoryFields) {
             // Clear the array
             this._categories = [];

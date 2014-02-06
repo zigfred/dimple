@@ -3,7 +3,7 @@
 // Source: /src/objects/storyboard/methods/goToFrame.js
 (function () {
     "use strict";
-    dimple.storyboard.prototype.goToFrame = function (frameText) {
+    dimple.Storyboard.prototype.goToFrame = function (frameText) {
         if (this._getCategories().length > 0) {
             var index = this._getCategories().indexOf(frameText);
             this._goToFrameIndex(index);

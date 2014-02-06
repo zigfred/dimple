@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addLogAxis
 (function () {
     "use strict";
-    dimple.chart.prototype.addLogAxis = function (position, logField, logBase) {
+    dimple.Chart.prototype.addLogAxis = function (position, logField, logBase) {
         var axis = this.addAxis(position, null, logField, null);
         if (logBase !== null && logBase !== undefined) {
             axis.logBase = logBase;

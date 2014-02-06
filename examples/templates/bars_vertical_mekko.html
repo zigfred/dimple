@@ -4,7 +4,7 @@
   <script type="text/javascript">
     var svg = dimple.newSvg("#chartContainer", 590, 400);
     d3.tsv("/data/example_data.tsv", function (data) {
-      var myChart = new dimple.chart(svg, data);
+      var myChart = new dimple.Chart(svg, data);
       myChart.setBounds(65, 50, 505, 310)
       myChart.addPctAxis("x", "Unit Sales", "Channel");
       myChart.addPctAxis("y", "Unit Sales");

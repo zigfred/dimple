@@ -3,7 +3,7 @@
 // Source: /src/objects/axis/methods/_update.js
 (function () {
     "use strict";
-    dimple.axis.prototype._update = function (refactor) {
+    dimple.Axis.prototype._update = function (refactor) {
 
         var distinctCats = [],
             ticks,

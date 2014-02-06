@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.color
 (function () {
     "use strict";
-    dimple.color = function (fill, stroke, opacity) {
+    dimple.Color = function (fill, stroke, opacity) {
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.color#wiki-fill
         this.fill = fill;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.color#wiki-stroke

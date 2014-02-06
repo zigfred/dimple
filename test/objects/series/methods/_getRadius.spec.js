@@ -22,7 +22,7 @@
             mockAxis._scaleValue.andReturn(scaleReturn);
 
             // Instantiate the series to test
-            seriesUnderTest = new dimple.series();
+            seriesUnderTest = new dimple.Series();
             seriesUnderTest.z = mockAxis;
 
             // Set up validation spies

@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis
 (function () {
     "use strict";
-    dimple.axis = function (chart, position, categoryFields, measure, timeField) {
+    dimple.Axis = function (chart, position, categoryFields, measure, timeField) {
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#wiki-chart
         this.chart = chart;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#wiki-position

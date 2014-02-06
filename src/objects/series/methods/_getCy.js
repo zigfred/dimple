@@ -1,15 +1,17 @@
 // Copyright: 2014 PMSI-AlignAlytics
 // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
 // Source: /src/objects/series/methods/_getCy.js
+// Tests: /test/objects/series/methods/_getCy.spec.js
 (function () {
     "use strict";
     /**
-     * Calculate the physical centre y co-ordinate for the passed unscaled value
+     * Calculate the physical centre y co-ordinate for the passed unscaled value.
      * @param {string} unscaledValue - The logical cy value to be converted to a physical value.  It could be a string for category axes or a number for measure axes.
      * @param {number} [innerBarCount] - The number of small bars within a bar group.  This is only required for multiple category axes.
      * @param {number} [offset] - The zero based index of an inner bar within a bar group.  This is only required for multiple category axes.
+     * @return {number} - The physical centre y co-ordinate.
      */
-    dimple.series.prototype._getCy = function (unscaledValue, innerBarCount, offset) {
+    dimple.Series.prototype._getCy = function (unscaledValue, innerBarCount, offset) {
         var returnCy = 0;
         // Validate the required parameters and properties
         dimple.validation._isDefined("y axis", this.y);

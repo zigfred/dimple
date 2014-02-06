@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.storyboard
 (function () {
     "use strict";
-    dimple.storyboard = function (chart, categoryFields) {
+    dimple.Storyboard = function (chart, categoryFields) {
 
         // Handle an individual string as an array
         if (categoryFields !== null && categoryFields !== undefined) {

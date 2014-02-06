@@ -4,7 +4,7 @@
 (function () {
     "use strict";
     // Access the pixel value of the height of the legend area
-    dimple.legend.prototype._heightPixels = function () {
+    dimple.Legend.prototype._heightPixels = function () {
         return dimple._parseYPosition(this.height, this.chart.svg.node());
     };
 }());

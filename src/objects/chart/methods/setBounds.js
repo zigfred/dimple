@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-setBounds
 (function () {
     "use strict";
-    dimple.chart.prototype.setBounds = function (x, y, width, height) {
+    dimple.Chart.prototype.setBounds = function (x, y, width, height) {
         // Store the passed parameters
         this.x = x;
         this.y = y;

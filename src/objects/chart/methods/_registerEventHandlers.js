@@ -4,12 +4,12 @@
 (function () {
     "use strict";
     // Register events, handle standard d3 shape events
-    dimple.chart.prototype._registerEventHandlers = function (series) {
+    dimple.Chart.prototype._registerEventHandlers = function (series) {
         if (series._eventHandlers !== null && series._eventHandlers.length > 0) {
             series._eventHandlers.forEach(function (thisHandler) {
                 if (thisHandler.handler !== null && typeof (thisHandler.handler) === "function") {
                     series.shapes.on(thisHandler.event, function (d) {
-                        var e = new dimple.eventArgs();
+                        var e = new dimple.EventArgs();
                         if (series.chart.storyboard !== null) {
                             e.frameValue = series.chart.storyboard.getFrameValue();
                         }

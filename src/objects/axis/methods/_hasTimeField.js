@@ -3,7 +3,7 @@
 // Source: /src/objects/axis/methods/_hasTimeField.js
 (function () {
     "use strict";
-    dimple.axis.prototype._hasTimeField = function () {
+    dimple.Axis.prototype._hasTimeField = function () {
         return (this.timeField !== null && this.timeField !== undefined);
     };
 }());

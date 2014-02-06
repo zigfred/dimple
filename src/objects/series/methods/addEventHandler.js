@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.series#wiki-addEventHandler
 (function () {
     "use strict";
-    dimple.series.prototype.addEventHandler = function (event, handler) {
+    dimple.Series.prototype.addEventHandler = function (event, handler) {
         this._eventHandlers.push({ event: event, handler: handler });
     };
 }());

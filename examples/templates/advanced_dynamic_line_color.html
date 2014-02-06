@@ -10,7 +10,7 @@
       data = dimple.filterData(data, "Channel", "Hypermarkets");
 
       // Create and Position a Chart
-      var myChart = new dimple.chart(svg, data);
+      var myChart = new dimple.Chart(svg, data);
       myChart.setBounds(60, 30, 500, 300);
       var x = myChart.addCategoryAxis("x", "Month")
       myChart.addMeasureAxis("y", "Unit Sales");

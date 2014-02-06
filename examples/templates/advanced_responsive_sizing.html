@@ -12,7 +12,7 @@
             // Set up a standard chart
             var myChart;
             d3.tsv("/data/example_data.tsv", function (data) {
-                myChart = new dimple.chart(svg, data);
+                myChart = new dimple.Chart(svg, data);
 
                 // Use the new set margins method to set partially fixed and
                 // partially proportional to the svg
@@ -38,7 +38,7 @@
             // button to a form but as we have the library loaded - and we
             // love d3 - we may as well use it. Ignore the code from this
             // point on unless you want to learn a way of making buttons in d3
-            var height = 60, width = 180, color = new dimple.color("#B3DE69");
+            var height = 60, width = 180, color = new dimple.Color("#B3DE69");
 
             svg.append("rect")
                 .attr("x", dimple._parentWidth(svg.node()) / 2 - width / 2)

@@ -5,7 +5,7 @@
 (function () {
     "use strict";
     dimple.newSvg = function (parentSelector, width, height) {
-        var selectedShape = null;
+        var selectedShape;
         if (parentSelector === null || parentSelector === undefined) {
             parentSelector = "body";
         }

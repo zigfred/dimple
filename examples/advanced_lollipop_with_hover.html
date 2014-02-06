@@ -3,7 +3,7 @@
 <!----------------------------------------------------------------->
 <div id="chartContainer">
   <script src="/lib/d3.v3.min.js"></script>
-  <script src="/dist/dimple.v1.2.0.js"></script>
+  <script src="/dist/dimple.v2.0.0.js"></script>
   <script type="text/javascript">
     
     var svg = dimple.newSvg("#chartContainer", 590, 400);
@@ -13,7 +13,7 @@
       data = dimple.filterData(data, "Brand", ["Theta", "Omicron", "Kappa", "Beta", "Lambda", "Alpha"]);
 
       // The main chart
-      var myChart = new dimple.chart(svg, data);
+      var myChart = new dimple.Chart(svg, data);
       // The chart to show in a tooltip
       var tipChart = null;
       // The other popup shapes
@@ -96,7 +96,7 @@
         hoverData = dimple.filterData(hoverData, "SKU", e.seriesValue);
         
         // Create a new mini chart of Unit Sales over Months
-        tipChart = new dimple.chart(svg,  hoverData);
+        tipChart = new dimple.Chart(svg,  hoverData);
         tipChart.setBounds(x + 10, y + 30, width - 10, height - 40);
         tipChart.addCategoryAxis("x", "Date").hidden = true;
         tipChart.addMeasureAxis("y", "Unit Sales").hidden = true;

@@ -28,7 +28,7 @@
 
       // Create a base chart.  This will provide the base axes and the
       // chart positioning.
-      var myChart = new dimple.chart(svg, data);
+      var myChart = new dimple.Chart(svg, data);
       myChart.setBounds(60, 25, 505, 350)
       // Create a matrix by the 2 dimensions
       var x = myChart.addCategoryAxis("x", "Quarter");
@@ -63,7 +63,7 @@
         filteredData = dimple.filterData(filteredData, "Price Tier", d.yField);
 
         // Draw a new chart which will go in the current shape
-        var subChart = new dimple.chart(svg, filteredData);
+        var subChart = new dimple.Chart(svg, filteredData);
         
         // Get the shape from the main chart on which this chart is based
         var shape = d3.select(this);

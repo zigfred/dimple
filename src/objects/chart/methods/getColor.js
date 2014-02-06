@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-getColor
 (function () {
     "use strict";
-    dimple.chart.prototype.getColor = function (tag) {
+    dimple.Chart.prototype.getColor = function (tag) {
         // If no color is assigned, do so here
         if (this._assignedColors[tag] === null || this._assignedColors[tag] === undefined) {
             this._assignedColors[tag] = this.defaultColors[this._nextColor];

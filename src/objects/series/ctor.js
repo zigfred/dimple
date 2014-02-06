@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.series
 (function () {
     "use strict";
-    dimple.series = function (chart, categoryFields, xAxis, yAxis, zAxis, colorAxis, plotFunction, aggregateFunction, stacked) {
+    dimple.Series = function (chart, categoryFields, xAxis, yAxis, zAxis, colorAxis, plotFunction, aggregateFunction, stacked) {
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.series#wiki-chart
         this.chart = chart;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.series#wiki-x

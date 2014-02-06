@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addSeries
 (function () {
     "use strict";
-    dimple.chart.prototype.addSeries = function (categoryFields, plotFunction, axes) {
+    dimple.Chart.prototype.addSeries = function (categoryFields, plotFunction, axes) {
         // Deal with no axes passed
         if (axes === null || axes === undefined) { axes = this.axes; }
         // Deal with no plot function
@@ -34,7 +34,7 @@
             categoryFields = [].concat(categoryFields);
         }
         // Create a series object
-        series = new dimple.series(
+        series = new dimple.Series(
             this,
             categoryFields,
             xAxis,

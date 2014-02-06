@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.eventArgs
 (function () {
     "use strict";
-    dimple.eventArgs = function () {
+    dimple.EventArgs = function () {
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.eventArgs#wiki-seriesValue
         this.seriesValue = null;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.eventArgs#wiki-xValue

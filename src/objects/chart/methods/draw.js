@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-draw
 (function () {
     "use strict";
-    dimple.chart.prototype.draw = function (duration, noDataChange) {
+    dimple.Chart.prototype.draw = function (duration, noDataChange) {
         // Deal with optional parameter
         duration = (duration === null || duration === undefined ? 0 : duration);
         // Catch the first x and y

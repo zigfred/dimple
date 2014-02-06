@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addPctAxis
 (function () {
     "use strict";
-    dimple.chart.prototype.addPctAxis = function (position, measure, categories) {
+    dimple.Chart.prototype.addPctAxis = function (position, measure, categories) {
         var pctAxis = null;
         if (categories !== null && categories !== undefined) {
             pctAxis = this.addAxis(position, categories, measure);

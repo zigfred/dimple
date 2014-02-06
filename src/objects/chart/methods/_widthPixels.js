@@ -4,7 +4,7 @@
 (function () {
     "use strict";
     // Access the pixel value of the width of the plot area
-    dimple.chart.prototype._widthPixels = function () {
+    dimple.Chart.prototype._widthPixels = function () {
         return dimple._parseXPosition(this.width, this.svg.node());
     };
 }());

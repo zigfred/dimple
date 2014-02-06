@@ -2,7 +2,7 @@
 // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
 // Source: /src/objects/static.js
 var dimple = {
-    version: "1.2.0",
+    version: "2.0.0",
     plot: {},
     aggregateMethod: {},
     validation: {},

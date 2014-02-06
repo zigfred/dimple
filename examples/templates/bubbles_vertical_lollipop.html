@@ -7,7 +7,7 @@
         data = dimple.filterData(data, "Date", [
           "01/07/2012", "01/08/2012", "01/09/2012",
           "01/10/2012", "01/11/2012", "01/12/2012"]);
-        var myChart = new dimple.chart(svg, data);
+        var myChart = new dimple.Chart(svg, data);
         myChart.setBounds(60, 30, 500, 330)
         var x = myChart.addCategoryAxis("x", "Month");
         x.addOrderRule("Date");

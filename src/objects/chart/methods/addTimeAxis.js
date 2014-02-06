@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addTimeAxis
 (function () {
     "use strict";
-    dimple.chart.prototype.addTimeAxis = function (position, timeField, inputFormat, outputFormat) {
+    dimple.Chart.prototype.addTimeAxis = function (position, timeField, inputFormat, outputFormat) {
         var axis = this.addAxis(position, null, null, timeField);
         axis.tickFormat = outputFormat;
         axis.dateParseFormat = inputFormat;

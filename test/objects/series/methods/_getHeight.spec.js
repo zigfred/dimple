@@ -37,7 +37,7 @@
             mockAxis._pointSize.andReturn(pointSize);
 
             // Instantiate the series to test
-            seriesUnderTest = new dimple.series();
+            seriesUnderTest = new dimple.Series();
             seriesUnderTest.y = mockAxis;
             seriesUnderTest.y.floatingBarWidth = floatingBarWidth;
 
@@ -62,8 +62,7 @@
             expect(dimple.validation._isDefined).toHaveBeenCalledWith("y axis", seriesUnderTest.y);
         });
 
-        it("Doesn't validate y and height for time series", function () {
-            seriesUnderTest.y._hasTimeField.andReturn(true);
+        it("Doesn't validate y and height for axes other than measures", function () {
             try {
                 seriesUnderTest._getHeight(unscaledY, unscaledHeight, innerBarCount);
             } catch (ignore) { /* validation is not under test */ }
@@ -71,7 +70,8 @@
             expect(dimple.validation._isDefined).not.toHaveBeenCalledWith("unscaledHeight", unscaledHeight);
         });
 
-        it("Validates y and height for axes other than time series", function () {
+        it("Validates y and height for measure axes", function () {
+            seriesUnderTest.y._hasMeasure.andReturn(true);
             try {
                 seriesUnderTest._getHeight(unscaledY, unscaledHeight, innerBarCount);
             } catch (ignore) { /* validation is not under test */ }
@@ -88,7 +88,7 @@
             expect(dimple.validation._isPositiveNumber).not.toHaveBeenCalled();
         });
 
-        it("Validates inner bar count for multiple category axes", function() {
+        it("Validates inner bar count for multiple category axes", function () {
             seriesUnderTest.y._hasMultipleCategories.andReturn(true);
             try {
                 seriesUnderTest._getHeight(unscaledY, unscaledHeight, innerBarCount);

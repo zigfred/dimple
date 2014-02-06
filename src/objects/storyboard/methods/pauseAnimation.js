@@ -3,7 +3,7 @@
 // Source: /src/objects/storyboard/methods/pauseAnimation.js
 (function () {
     "use strict";
-    dimple.storyboard.prototype.pauseAnimation = function () {
+    dimple.Storyboard.prototype.pauseAnimation = function () {
         if (this._animationTimer !== null) {
             window.clearInterval(this._animationTimer);
             this._animationTimer = null;

@@ -3,7 +3,7 @@
 <!----------------------------------------------------------------->
 <div id="chartContainer">
   <script src="/lib/d3.v3.min.js"></script>
-  <script src="/dist/dimple.v1.2.0.js"></script>
+  <script src="/dist/dimple.v2.0.0.js"></script>
   <script type="text/javascript">
       var svg = dimple.newSvg("#chartContainer", 590, 400);
       d3.tsv("/data/example_data.tsv", function (data) {
@@ -15,7 +15,7 @@
           ]);
 
           // Create the indicator chart on the right of the main chart
-          var indicator = new dimple.chart(svg, data);
+          var indicator = new dimple.Chart(svg, data);
 
           // Pick blue as the default and orange for the selected month
           var defaultColor = indicator.defaultColors[0];
@@ -80,7 +80,7 @@
                   .style("opacity", 0.4);
 
           // Draw the main chart
-          var bubbles = new dimple.chart(svg, data);
+          var bubbles = new dimple.Chart(svg, data);
           bubbles.setBounds(60, 50, 355, 310)
           bubbles.addMeasureAxis("x", "Distribution");
           bubbles.addMeasureAxis("y", "Price");

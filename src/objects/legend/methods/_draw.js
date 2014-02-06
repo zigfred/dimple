@@ -4,7 +4,7 @@
 (function () {
     "use strict";
     // Render the legend
-    dimple.legend.prototype._draw = function (duration) {
+    dimple.Legend.prototype._draw = function (duration) {
 
         // Create an array of distinct color elements from the series
         var legendArray = this._getEntries(),

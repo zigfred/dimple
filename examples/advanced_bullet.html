@@ -3,7 +3,7 @@
 <!----------------------------------------------------------------->
 <div id="chartContainer">
   <script src="/lib/d3.v3.min.js"></script>
-  <script src="/dist/dimple.v1.2.0.js"></script>
+  <script src="/dist/dimple.v2.0.0.js"></script>
   <script type="text/javascript">
 
     // Create the svg and set the dimensions
@@ -54,7 +54,7 @@
         }, this);
 
         // Create the bullet chart itself at the passed bounds
-        var bullet = new dimple.chart(svg, bData);
+        var bullet = new dimple.Chart(svg, bData);
         bullet.setBounds(x, y, height, width);
 
         // Add the x and y for the main bar

@@ -4,8 +4,8 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-assignColor
 (function () {
     "use strict";
-    dimple.chart.prototype.assignColor = function (tag, fill, stroke, opacity) {
-        this._assignedColors[tag] = new dimple.color(fill, stroke, opacity);
+    dimple.Chart.prototype.assignColor = function (tag, fill, stroke, opacity) {
+        this._assignedColors[tag] = new dimple.Color(fill, stroke, opacity);
         return this._assignedColors[tag];
     };
 }());

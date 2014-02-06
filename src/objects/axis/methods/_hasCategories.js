@@ -3,7 +3,7 @@
 // Source: /src/objects/axis/methods/_hasCategories.js
 (function () {
     "use strict";
-    dimple.axis.prototype._hasCategories = function () {
+    dimple.Axis.prototype._hasCategories = function () {
         return (this.categoryFields !== null && this.categoryFields !== undefined && this.categoryFields.length > 0);
     };
 }());

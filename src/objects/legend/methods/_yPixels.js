@@ -4,7 +4,7 @@
 (function () {
     "use strict";
     // Access the pixel position of the y co-ordinate of the legend area
-    dimple.legend.prototype._yPixels = function () {
+    dimple.Legend.prototype._yPixels = function () {
         return dimple._parseYPosition(this.y, this.chart.svg.node());
     };
 }());

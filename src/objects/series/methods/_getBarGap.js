@@ -1,10 +1,15 @@
 // Copyright: 2014 PMSI-AlignAlytics
 // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
 // Source: /src/objects/series/methods/_getBarGap.js
+// Tests: /test/objects/series/methods/_getBarGap.spec.js
 (function () {
     "use strict";
-    // The gap on one side of a bar
-    dimple.series.prototype._getBarGap = function (position) {
+    /**
+     * Calculate gap on one side of a bar in a bar chart.
+     * @param {string} position - one-letter name of the axis on which to calculate the gap ("x" or "y").
+     * @return {number} - The physical gap in pixels on one side of the bar.
+     */
+    dimple.Series.prototype._getBarGap = function (position) {
         var returnGap = 0;
         // Validate the axis
         dimple.validation._isDefined("position", position);

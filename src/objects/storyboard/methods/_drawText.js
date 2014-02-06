@@ -3,7 +3,7 @@
 // Source: /src/objects/storyboard/methods/drawText.js
 (function () {
     "use strict";
-    dimple.storyboard.prototype._drawText = function (duration) {
+    dimple.Storyboard.prototype._drawText = function (duration) {
         if (this.storyLabel === null || this.storyLabel === undefined) {
             var chart = this.chart,
                 xCount = 0;

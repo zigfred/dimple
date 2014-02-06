@@ -1,10 +1,15 @@
 // Copyright: 2014 PMSI-AlignAlytics
 // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
 // Source: /src/objects/series/methods/_getBarSize.js
+// Tests: /test/objects/series/methods/_getBarSize.spec.js
 (function () {
     "use strict";
-    // The amount of axis allocated to a single bar (accounting for bar gap)
-    dimple.series.prototype._getBarSize = function (position) {
+    /**
+     * The number of pixels along the given axis allocated to a bar (excluding bar gap).
+     * @param {string} position - one-letter name of the axis on which to calculate the gap ("x" or "y").
+     * @return {number} - The physical gap in pixels on one side of the bar.
+     */
+    dimple.Series.prototype._getBarSize = function (position) {
         var returnSize = 0;
         // Validate the axis
         dimple.validation._isDefined("position", position);

@@ -5,9 +5,9 @@
     "use strict";
    // Return the ordinal value of the passed axis.  If an orientation is passed, return the order for the
     // specific orientation, otherwise return the order from all axes.  Returns -1 if the passed axis isn't part of the collection
-    dimple.chart.prototype._axisIndex = function (axis, orientation) {
+    dimple.Chart.prototype._axisIndex = function (axis, orientation) {
 
-        var i = 0,
+        var i,
             axisCount = 0,
             index = -1;
 

@@ -4,7 +4,7 @@
 (function () {
     "use strict";
     // Access the pixel position of the x co-ordinate of the plot area
-    dimple.chart.prototype._xPixels = function () {
+    dimple.Chart.prototype._xPixels = function () {
         return dimple._parseXPosition(this.x, this.svg.node());
     };
 }());

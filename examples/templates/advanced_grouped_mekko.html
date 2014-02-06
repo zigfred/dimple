@@ -6,7 +6,7 @@
     d3.tsv("/data/example_data.tsv", function (data) {
     
       // Create and position the chart
-      var myChart = new dimple.chart(svg, data);
+      var myChart = new dimple.Chart(svg, data);
       myChart.setBounds(65, 50, 505, 310)
 
       // Add a Grouped Mekko Axis.  This will show Brands grouped by owners

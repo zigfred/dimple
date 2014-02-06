@@ -1,15 +1,17 @@
 // Copyright: 2014 PMSI-AlignAlytics
 // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
 // Source: /src/objects/series/methods/_getCx.js
+// Tests: /test/objects/series/methods/_getCx.spec.js
 (function () {
     "use strict";
     /**
-     * Calculate the physical centre x co-ordinate for the passed unscaled value
+     * Calculate the physical centre x co-ordinate for the passed unscaled value.
      * @param {string} unscaledValue - The logical cx value to be converted to a physical value.  It could be a string for category axes or a number for measure axes.
      * @param {number} [innerBarCount] - The number of small bars within a bar group.  This is only required for multiple category axes.
      * @param {number} [offset] - The zero based index of an inner bar within a bar group.  This is only required for multiple category axes.
+     * @return {number} - The physical centre x co-ordinate.
      */
-    dimple.series.prototype._getCx = function (unscaledValue, innerBarCount, offset) {
+    dimple.Series.prototype._getCx = function (unscaledValue, innerBarCount, offset) {
         var returnCx = 0;
         // Validate the required parameters and properties
         dimple.validation._isDefined("x axis", this.x);

@@ -3,7 +3,7 @@
 // Source: /src/objects/series/methods/_axisBounds.js
 (function () {
     "use strict";
-    dimple.series.prototype._axisBounds = function (position) {
+    dimple.Series.prototype._axisBounds = function (position) {
         var bounds = { min: 0, max: 0 },
             // The primary axis for this comparison
             primaryAxis = null,

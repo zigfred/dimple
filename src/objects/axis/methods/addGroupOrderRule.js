@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#wiki-addGroupOrderRule
 (function () {
     "use strict";
-    dimple.axis.prototype.addGroupOrderRule = function (ordering, desc) {
+    dimple.Axis.prototype.addGroupOrderRule = function (ordering, desc) {
         this._groupOrderRules.push({ ordering : ordering, desc : desc });
     };
 }());

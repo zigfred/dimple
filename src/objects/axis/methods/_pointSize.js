@@ -4,7 +4,7 @@
 // The amount of an axis allocated to a single data point in bar type charts (not accounting for bar gap)
 (function () {
     "use strict";
-    dimple.axis.prototype._pointSize = function () {
+    dimple.Axis.prototype._pointSize = function () {
         var returnValue = 0;
         if (this._hasCategories()) {
             if (this.position === "x") {

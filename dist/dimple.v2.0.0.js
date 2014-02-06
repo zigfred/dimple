@@ -61,15 +61,15 @@ var dimple = {
             grad.selectAll("stop")
                 .data(colors)
                 .transition().duration(duration)
-                .attr("offset", function(d) { return d.offset; })
-                .attr("stop-color", function(d) { return d.color; });
+                .attr("offset", function (d) { return d.offset; })
+                .attr("stop-color", function (d) { return d.color; });
         } else {
             grad.selectAll("stop")
                 .data(colors)
                 .enter()
                 .append("stop")
-                .attr("offset", function(d) { return d.offset; })
-                .attr("stop-color", function(d) { return d.color; });
+                .attr("offset", function (d) { return d.offset; })
+                .attr("stop-color", function (d) { return d.color; });
         }
     };
 }());
@@ -523,13 +523,13 @@ var dimple = {
 (function () {
     "use strict";
     dimple.getUniqueValues = function (data, fields) {
-        var returnlist = [];
+        var returnList = [];
         // Put single values into single value arrays
         if (fields !== null && fields !== undefined) {
             fields = [].concat(fields);
             // Iterate every row in the data
             data.forEach(function (d) {
-                // Handle multiple category values by iterating the fields in the row and concatonate the values
+                // Handle multiple category values by iterating the fields in the row and concatenate the values
                 var field = "";
                 fields.forEach(function (f, i) {
                     if (i > 0) {
@@ -538,12 +538,12 @@ var dimple = {
                     field += d[f];
                 }, this);
                 // If the field was not found, add it to the end of the categories array
-                if (returnlist.indexOf(field) === -1) {
-                    returnlist.push(field);
+                if (returnList.indexOf(field) === -1) {
+                    returnList.push(field);
                 }
             }, this);
         }
-        return returnlist;
+        return returnList;
     };
 }());
 
@@ -554,7 +554,7 @@ var dimple = {
 (function () {
     "use strict";
     dimple.newSvg = function (parentSelector, width, height) {
-        var selectedShape = null;
+        var selectedShape;
         if (parentSelector === null || parentSelector === undefined) {
             parentSelector = "body";
         }
@@ -632,7 +632,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis
 (function () {
     "use strict";
-    dimple.axis = function (chart, position, categoryFields, measure, timeField) {
+    dimple.Axis = function (chart, position, categoryFields, measure, timeField) {
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#wiki-chart
         this.chart = chart;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#wiki-position
@@ -697,7 +697,7 @@ var dimple = {
 // Source: /src/objects/axis/methods/_draw.js
 (function () {
     "use strict";
-    dimple.axis.prototype._draw = null;
+    dimple.Axis.prototype._draw = null;
 }());
 
 // Copyright: 2014 PMSI-AlignAlytics
@@ -705,7 +705,7 @@ var dimple = {
 // Source: /src/objects/axis/methods/_getFormat.js
 (function () {
     "use strict";
-    dimple.axis.prototype._getFormat = function () {
+    dimple.Axis.prototype._getFormat = function () {
         var returnFormat,
             max,
             min,
@@ -759,7 +759,7 @@ var dimple = {
 // Source: /src/objects/axis/methods/_getTimePeriod.js
 (function () {
     "use strict";
-    dimple.axis.prototype._getTimePeriod = function () {
+    dimple.Axis.prototype._getTimePeriod = function () {
         // A javascript date object
         var outPeriod = this.timePeriod,
             maxPeriods = 30,
@@ -794,7 +794,7 @@ var dimple = {
 // Source: /src/objects/axis/methods/_hasCategories.js
 (function () {
     "use strict";
-    dimple.axis.prototype._hasCategories = function () {
+    dimple.Axis.prototype._hasCategories = function () {
         return (this.categoryFields !== null && this.categoryFields !== undefined && this.categoryFields.length > 0);
     };
 }());
@@ -804,7 +804,7 @@ var dimple = {
 // Source: /src/objects/axis/methods/_hasMeasure.js
 (function () {
     "use strict";
-    dimple.axis.prototype._hasMeasure = function () {
+    dimple.Axis.prototype._hasMeasure = function () {
         return (this.measure !== null && this.measure !== undefined);
     };
 }());
@@ -814,7 +814,7 @@ var dimple = {
 // Source: /src/objects/axis/methods/_hasMultipleCategories.js
 (function () {
     "use strict";
-    dimple.axis.prototype._hasMultipleCategories = function () {
+    dimple.Axis.prototype._hasMultipleCategories = function () {
         return (this._hasCategories() && this.categoryFields.length > 1);
     };
 }());
@@ -824,7 +824,7 @@ var dimple = {
 // Source: /src/objects/axis/methods/_hasTimeField.js
 (function () {
     "use strict";
-    dimple.axis.prototype._hasTimeField = function () {
+    dimple.Axis.prototype._hasTimeField = function () {
         return (this.timeField !== null && this.timeField !== undefined);
     };
 }());
@@ -834,7 +834,7 @@ var dimple = {
 // Source: /src/objects/axis/methods/_parseDate.js
 (function () {
     "use strict";
-    dimple.axis.prototype._parseDate = function (inDate) {
+    dimple.Axis.prototype._parseDate = function (inDate) {
         // A javascript date object
         var outDate;
         if (this.dateParseFormat === null || this.dateParseFormat === undefined) {
@@ -862,7 +862,7 @@ var dimple = {
 // The amount of an axis allocated to a single data point in bar type charts (not accounting for bar gap)
 (function () {
     "use strict";
-    dimple.axis.prototype._pointSize = function () {
+    dimple.Axis.prototype._pointSize = function () {
         var returnValue = 0;
         if (this._hasCategories()) {
             if (this.position === "x") {
@@ -880,7 +880,7 @@ var dimple = {
 // Source: /src/objects/axis/methods/_scaleValue.js
 (function () {
     "use strict";
-    dimple.axis.prototype._scaleValue = function (unscaledValue) {
+    dimple.Axis.prototype._scaleValue = function (unscaledValue) {
         var returnValue = 0;
         if (this._scale !== null && this._scale !== undefined) {
             returnValue = this._scale(unscaledValue);
@@ -896,7 +896,7 @@ var dimple = {
 // Source: /src/objects/axis/methods/_update.js
 (function () {
     "use strict";
-    dimple.axis.prototype._update = function (refactor) {
+    dimple.Axis.prototype._update = function (refactor) {
 
         var distinctCats = [],
             ticks,
@@ -1090,7 +1090,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#wiki-addGroupOrderRule
 (function () {
     "use strict";
-    dimple.axis.prototype.addGroupOrderRule = function (ordering, desc) {
+    dimple.Axis.prototype.addGroupOrderRule = function (ordering, desc) {
         this._groupOrderRules.push({ ordering : ordering, desc : desc });
     };
 }());
@@ -1101,7 +1101,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#wiki-addOrderRule
 (function () {
     "use strict";
-    dimple.axis.prototype.addOrderRule = function (ordering, desc) {
+    dimple.Axis.prototype.addOrderRule = function (ordering, desc) {
         this._orderRules.push({ ordering : ordering, desc : desc });
     };
 }());
@@ -1112,7 +1112,7 @@ var dimple = {
     // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
     // Source: /src/objects/chart/ctor.js
     // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart
-    dimple.chart = function (svg, data) {
+    dimple.Chart = function (svg, data) {
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-svg
         this.svg = svg;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-x
@@ -1141,18 +1141,18 @@ var dimple = {
         this.shapes = null;
         // Set the default colour palatte
         this.defaultColors = [
-            new dimple.color("#80B1D3"), // Blue
-            new dimple.color("#FB8072"), // Red
-            new dimple.color("#FDB462"), // Orange
-            new dimple.color("#B3DE69"), // Green
-            new dimple.color("#FFED6F"), // Yellow
-            new dimple.color("#BC80BD"), // Purple
-            new dimple.color("#8DD3C7"), // Turquoise
-            new dimple.color("#CCEBC5"), // Pale Blue
-            new dimple.color("#FFFFB3"), // Pale Yellow
-            new dimple.color("#BEBADA"), // Lavender
-            new dimple.color("#FCCDE5"), // Pink
-            new dimple.color("#D9D9D9")  // Grey
+            new dimple.Color("#80B1D3"), // Blue
+            new dimple.Color("#FB8072"), // Red
+            new dimple.Color("#FDB462"), // Orange
+            new dimple.Color("#B3DE69"), // Green
+            new dimple.Color("#FFED6F"), // Yellow
+            new dimple.Color("#BC80BD"), // Purple
+            new dimple.Color("#8DD3C7"), // Turquoise
+            new dimple.Color("#CCEBC5"), // Pale Blue
+            new dimple.Color("#FFFFB3"), // Pale Yellow
+            new dimple.Color("#BEBADA"), // Lavender
+            new dimple.Color("#FCCDE5"), // Pink
+            new dimple.Color("#D9D9D9")  // Grey
         ];
         // The group within which to put all of this chart's objects
         this._group = svg.append("g");
@@ -1174,9 +1174,9 @@ var dimple = {
     "use strict";
    // Return the ordinal value of the passed axis.  If an orientation is passed, return the order for the
     // specific orientation, otherwise return the order from all axes.  Returns -1 if the passed axis isn't part of the collection
-    dimple.chart.prototype._axisIndex = function (axis, orientation) {
+    dimple.Chart.prototype._axisIndex = function (axis, orientation) {
 
-        var i = 0,
+        var i,
             axisCount = 0,
             index = -1;
 
@@ -1200,15 +1200,15 @@ var dimple = {
 // Source: /src/objects/chart/methods/_getSeriesData.js
 (function () {
     "use strict";
-    // Create a dataset containing positioning information for every series
-    dimple.chart.prototype._getSeriesData = function () {
+    // Create a data set containing positioning information for every series
+    dimple.Chart.prototype._getSeriesData = function () {
         // If there are series
         if (this.series !== null && this.series !== undefined) {
             // Iterate all the series
             this.series.forEach(function (series) {
                 // The data for this series
                 var returnData = [],
-                    // Handle multiple category values by iterating the fields in the row and concatonate the values
+                    // Handle multiple category values by iterating the fields in the row and concatenate the values
                     // This is repeated for each axis using a small anon function
                     getField = function (axis, row) {
                         var returnField = [];
@@ -1565,7 +1565,7 @@ var dimple = {
 (function () {
     "use strict";
     // Access the pixel value of the height of the plot area
-    dimple.chart.prototype._heightPixels = function () {
+    dimple.Chart.prototype._heightPixels = function () {
         return dimple._parseYPosition(this.height, this.svg.node());
     };
 }());
@@ -1576,12 +1576,12 @@ var dimple = {
 (function () {
     "use strict";
     // Register events, handle standard d3 shape events
-    dimple.chart.prototype._registerEventHandlers = function (series) {
+    dimple.Chart.prototype._registerEventHandlers = function (series) {
         if (series._eventHandlers !== null && series._eventHandlers.length > 0) {
             series._eventHandlers.forEach(function (thisHandler) {
                 if (thisHandler.handler !== null && typeof (thisHandler.handler) === "function") {
                     series.shapes.on(thisHandler.event, function (d) {
-                        var e = new dimple.eventArgs();
+                        var e = new dimple.EventArgs();
                         if (series.chart.storyboard !== null) {
                             e.frameValue = series.chart.storyboard.getFrameValue();
                         }
@@ -1606,7 +1606,7 @@ var dimple = {
 (function () {
     "use strict";
     // Access the pixel value of the width of the plot area
-    dimple.chart.prototype._widthPixels = function () {
+    dimple.Chart.prototype._widthPixels = function () {
         return dimple._parseXPosition(this.width, this.svg.node());
     };
 }());
@@ -1617,7 +1617,7 @@ var dimple = {
 (function () {
     "use strict";
     // Access the pixel position of the x co-ordinate of the plot area
-    dimple.chart.prototype._xPixels = function () {
+    dimple.Chart.prototype._xPixels = function () {
         return dimple._parseXPosition(this.x, this.svg.node());
     };
 }());
@@ -1628,7 +1628,7 @@ var dimple = {
 (function () {
     "use strict";
     // Access the pixel position of the y co-ordinate of the plot area
-    dimple.chart.prototype._yPixels = function () {
+    dimple.Chart.prototype._yPixels = function () {
         return dimple._parseYPosition(this.y, this.svg.node());
     };
 }());
@@ -1639,13 +1639,13 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addAxis
 (function () {
     "use strict";
-    dimple.chart.prototype.addAxis = function (position, categoryFields, measure, timeField) {
+    dimple.Chart.prototype.addAxis = function (position, categoryFields, measure, timeField) {
         // Convert the passed category fields to an array in case a single string is sent
         if (categoryFields !== null && categoryFields !== undefined) {
             categoryFields = [].concat(categoryFields);
         }
         // Create the axis object based on the passed parameters
-        var axis = new dimple.axis(
+        var axis = new dimple.Axis(
             this,
             position,
             categoryFields,
@@ -1665,7 +1665,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addCategoryAxis
 (function () {
     "use strict";
-    dimple.chart.prototype.addCategoryAxis = function (position, categoryFields) {
+    dimple.Chart.prototype.addCategoryAxis = function (position, categoryFields) {
         return this.addAxis(position, categoryFields, null);
     };
 }());
@@ -1676,7 +1676,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addColorAxis
 (function () {
     "use strict";
-    dimple.chart.prototype.addColorAxis = function (measure, colors) {
+    dimple.Chart.prototype.addColorAxis = function (measure, colors) {
         var colorAxis = this.addAxis("c", null, measure);
         colorAxis.colors = (colors === null || colors === undefined ? null : [].concat(colors));
         return colorAxis;
@@ -1689,12 +1689,12 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addLegend
 (function () {
     "use strict";
-    dimple.chart.prototype.addLegend = function (x, y, width, height, horizontalAlign, series) {
+    dimple.Chart.prototype.addLegend = function (x, y, width, height, horizontalAlign, series) {
         // Use all series by default
         series = (series === null || series === undefined ? this.series : [].concat(series));
         horizontalAlign = (horizontalAlign === null || horizontalAlign === undefined ? "left" : horizontalAlign);
         // Create the legend
-        var legend = new dimple.legend(this, x, y, width, height, horizontalAlign, series);
+        var legend = new dimple.Legend(this, x, y, width, height, horizontalAlign, series);
         // Add the legend to the array
         this.legends.push(legend);
         // Return the legend object
@@ -1708,7 +1708,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addLogAxis
 (function () {
     "use strict";
-    dimple.chart.prototype.addLogAxis = function (position, logField, logBase) {
+    dimple.Chart.prototype.addLogAxis = function (position, logField, logBase) {
         var axis = this.addAxis(position, null, logField, null);
         if (logBase !== null && logBase !== undefined) {
             axis.logBase = logBase;
@@ -1724,7 +1724,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addMeasureAxis
 (function () {
     "use strict";
-    dimple.chart.prototype.addMeasureAxis = function (position, measure) {
+    dimple.Chart.prototype.addMeasureAxis = function (position, measure) {
         return this.addAxis(position, null, measure);
     };
 }());
@@ -1735,7 +1735,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addPctAxis
 (function () {
     "use strict";
-    dimple.chart.prototype.addPctAxis = function (position, measure, categories) {
+    dimple.Chart.prototype.addPctAxis = function (position, measure, categories) {
         var pctAxis = null;
         if (categories !== null && categories !== undefined) {
             pctAxis = this.addAxis(position, categories, measure);
@@ -1753,7 +1753,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addSeries
 (function () {
     "use strict";
-    dimple.chart.prototype.addSeries = function (categoryFields, plotFunction, axes) {
+    dimple.Chart.prototype.addSeries = function (categoryFields, plotFunction, axes) {
         // Deal with no axes passed
         if (axes === null || axes === undefined) { axes = this.axes; }
         // Deal with no plot function
@@ -1783,7 +1783,7 @@ var dimple = {
             categoryFields = [].concat(categoryFields);
         }
         // Create a series object
-        series = new dimple.series(
+        series = new dimple.Series(
             this,
             categoryFields,
             xAxis,
@@ -1807,7 +1807,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addTimeAxis
 (function () {
     "use strict";
-    dimple.chart.prototype.addTimeAxis = function (position, timeField, inputFormat, outputFormat) {
+    dimple.Chart.prototype.addTimeAxis = function (position, timeField, inputFormat, outputFormat) {
         var axis = this.addAxis(position, null, null, timeField);
         axis.tickFormat = outputFormat;
         axis.dateParseFormat = inputFormat;
@@ -1821,8 +1821,8 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-assignColor
 (function () {
     "use strict";
-    dimple.chart.prototype.assignColor = function (tag, fill, stroke, opacity) {
-        this._assignedColors[tag] = new dimple.color(fill, stroke, opacity);
+    dimple.Chart.prototype.assignColor = function (tag, fill, stroke, opacity) {
+        this._assignedColors[tag] = new dimple.Color(fill, stroke, opacity);
         return this._assignedColors[tag];
     };
 }());
@@ -1833,7 +1833,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-draw
 (function () {
     "use strict";
-    dimple.chart.prototype.draw = function (duration, noDataChange) {
+    dimple.Chart.prototype.draw = function (duration, noDataChange) {
         // Deal with optional parameter
         duration = (duration === null || duration === undefined ? 0 : duration);
         // Catch the first x and y
@@ -2192,7 +2192,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-getColor
 (function () {
     "use strict";
-    dimple.chart.prototype.getColor = function (tag) {
+    dimple.Chart.prototype.getColor = function (tag) {
         // If no color is assigned, do so here
         if (this._assignedColors[tag] === null || this._assignedColors[tag] === undefined) {
             this._assignedColors[tag] = this.defaultColors[this._nextColor];
@@ -2209,7 +2209,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-setBounds
 (function () {
     "use strict";
-    dimple.chart.prototype.setBounds = function (x, y, width, height) {
+    dimple.Chart.prototype.setBounds = function (x, y, width, height) {
         // Store the passed parameters
         this.x = x;
         this.y = y;
@@ -2244,7 +2244,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-setMargins
 (function () {
     "use strict";
-    dimple.chart.prototype.setMargins = function (left, top, right, bottom) {
+    dimple.Chart.prototype.setMargins = function (left, top, right, bottom) {
         // Set the bounds here, functions below will be used for access
         this.x = left;
         this.y = top;
@@ -2279,9 +2279,9 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-setStoryboard
 (function () {
     "use strict";
-    dimple.chart.prototype.setStoryboard = function (categoryFields, tickHandler) {
+    dimple.Chart.prototype.setStoryboard = function (categoryFields, tickHandler) {
         // Create and assign the storyboard
-        this.storyboard = new dimple.storyboard(this, categoryFields);
+        this.storyboard = new dimple.Storyboard(this, categoryFields);
         // Set the event handler
         if (tickHandler !== null && tickHandler !== undefined) {
             this.storyboard.onTick = tickHandler;
@@ -2297,7 +2297,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.color
 (function () {
     "use strict";
-    dimple.color = function (fill, stroke, opacity) {
+    dimple.Color = function (fill, stroke, opacity) {
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.color#wiki-fill
         this.fill = fill;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.color#wiki-stroke
@@ -2313,7 +2313,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.eventArgs
 (function () {
     "use strict";
-    dimple.eventArgs = function () {
+    dimple.EventArgs = function () {
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.eventArgs#wiki-seriesValue
         this.seriesValue = null;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.eventArgs#wiki-xValue
@@ -2371,7 +2371,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.legend
 (function () {
     "use strict";
-    dimple.legend = function (chart, x, y, width, height, horizontalAlign, series) {
+    dimple.Legend = function (chart, x, y, width, height, horizontalAlign, series) {
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.legend#wiki-chart
         this.chart = chart;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.legend#wiki-series
@@ -2397,7 +2397,7 @@ var dimple = {
 (function () {
     "use strict";
     // Render the legend
-    dimple.legend.prototype._draw = function (duration) {
+    dimple.Legend.prototype._draw = function (duration) {
 
         // Create an array of distinct color elements from the series
         var legendArray = this._getEntries(),
@@ -2517,7 +2517,7 @@ var dimple = {
 (function () {
     "use strict";
     // Get an array of elements to be displayed in the legend
-    dimple.legend.prototype._getEntries = function () {
+    dimple.Legend.prototype._getEntries = function () {
         // Create an array of distinct series values
         var entries = [];
         // If there are some series
@@ -2555,7 +2555,7 @@ var dimple = {
 (function () {
     "use strict";
     // Access the pixel value of the height of the legend area
-    dimple.legend.prototype._heightPixels = function () {
+    dimple.Legend.prototype._heightPixels = function () {
         return dimple._parseYPosition(this.height, this.chart.svg.node());
     };
 }());
@@ -2566,7 +2566,7 @@ var dimple = {
 (function () {
     "use strict";
     // Access the pixel value of the width of the legend area
-    dimple.legend.prototype._widthPixels = function () {
+    dimple.Legend.prototype._widthPixels = function () {
         return dimple._parseXPosition(this.width, this.chart.svg.node());
     };
 }());
@@ -2577,7 +2577,7 @@ var dimple = {
 (function () {
     "use strict";
     // Access the pixel position of the x co-ordinate of the legend area
-    dimple.legend.prototype._xPixels = function () {
+    dimple.Legend.prototype._xPixels = function () {
         return dimple._parseXPosition(this.x, this.chart.svg.node());
     };
 }());
@@ -2588,7 +2588,7 @@ var dimple = {
 (function () {
     "use strict";
     // Access the pixel position of the y co-ordinate of the legend area
-    dimple.legend.prototype._yPixels = function () {
+    dimple.Legend.prototype._yPixels = function () {
         return dimple._parseYPosition(this.y, this.chart.svg.node());
     };
 }());
@@ -4007,7 +4007,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.series
 (function () {
     "use strict";
-    dimple.series = function (chart, categoryFields, xAxis, yAxis, zAxis, colorAxis, plotFunction, aggregateFunction, stacked) {
+    dimple.Series = function (chart, categoryFields, xAxis, yAxis, zAxis, colorAxis, plotFunction, aggregateFunction, stacked) {
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.series#wiki-chart
         this.chart = chart;
         // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.series#wiki-x
@@ -4048,7 +4048,7 @@ var dimple = {
 // Source: /src/objects/series/methods/_axisBounds.js
 (function () {
     "use strict";
-    dimple.series.prototype._axisBounds = function (position) {
+    dimple.Series.prototype._axisBounds = function (position) {
         var bounds = { min: 0, max: 0 },
             // The primary axis for this comparison
             primaryAxis = null,
@@ -4166,7 +4166,7 @@ var dimple = {
 // Source: /src/objects/series/methods/_dropLineOrigin.js
 (function () {
     "use strict";
-    dimple.series.prototype._dropLineOrigin = function() {
+    dimple.Series.prototype._dropLineOrigin = function () {
         // Get the origin co-ordinates for axis drop lines
         var xIndex = 0,
             yIndex = 0,
@@ -4231,10 +4231,15 @@ var dimple = {
 // Copyright: 2014 PMSI-AlignAlytics
 // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
 // Source: /src/objects/series/methods/_getBarGap.js
+// Tests: /test/objects/series/methods/_getBarGap.spec.js
 (function () {
     "use strict";
-    // The gap on one side of a bar
-    dimple.series.prototype._getBarGap = function (position) {
+    /**
+     * Calculate gap on one side of a bar in a bar chart.
+     * @param {string} position - one-letter name of the axis on which to calculate the gap ("x" or "y").
+     * @return {number} - The physical gap in pixels on one side of the bar.
+     */
+    dimple.Series.prototype._getBarGap = function (position) {
         var returnGap = 0;
         // Validate the axis
         dimple.validation._isDefined("position", position);
@@ -4250,10 +4255,15 @@ var dimple = {
 // Copyright: 2014 PMSI-AlignAlytics
 // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
 // Source: /src/objects/series/methods/_getBarSize.js
+// Tests: /test/objects/series/methods/_getBarSize.spec.js
 (function () {
     "use strict";
-    // The amount of axis allocated to a single bar (accounting for bar gap)
-    dimple.series.prototype._getBarSize = function (position) {
+    /**
+     * The number of pixels along the given axis allocated to a bar (excluding bar gap).
+     * @param {string} position - one-letter name of the axis on which to calculate the gap ("x" or "y").
+     * @return {number} - The physical gap in pixels on one side of the bar.
+     */
+    dimple.Series.prototype._getBarSize = function (position) {
         var returnSize = 0;
         // Validate the axis
         dimple.validation._isDefined("position", position);
@@ -4269,15 +4279,17 @@ var dimple = {
 // Copyright: 2014 PMSI-AlignAlytics
 // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
 // Source: /src/objects/series/methods/_getCx.js
+// Tests: /test/objects/series/methods/_getCx.spec.js
 (function () {
     "use strict";
     /**
-     * Calculate the physical centre x co-ordinate for the passed unscaled value
+     * Calculate the physical centre x co-ordinate for the passed unscaled value.
      * @param {string} unscaledValue - The logical cx value to be converted to a physical value.  It could be a string for category axes or a number for measure axes.
      * @param {number} [innerBarCount] - The number of small bars within a bar group.  This is only required for multiple category axes.
      * @param {number} [offset] - The zero based index of an inner bar within a bar group.  This is only required for multiple category axes.
+     * @return {number} - The physical centre x co-ordinate.
      */
-    dimple.series.prototype._getCx = function (unscaledValue, innerBarCount, offset) {
+    dimple.Series.prototype._getCx = function (unscaledValue, innerBarCount, offset) {
         var returnCx = 0;
         // Validate the required parameters and properties
         dimple.validation._isDefined("x axis", this.x);
@@ -4306,15 +4318,17 @@ var dimple = {
 // Copyright: 2014 PMSI-AlignAlytics
 // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
 // Source: /src/objects/series/methods/_getCy.js
+// Tests: /test/objects/series/methods/_getCy.spec.js
 (function () {
     "use strict";
     /**
-     * Calculate the physical centre y co-ordinate for the passed unscaled value
+     * Calculate the physical centre y co-ordinate for the passed unscaled value.
      * @param {string} unscaledValue - The logical cy value to be converted to a physical value.  It could be a string for category axes or a number for measure axes.
      * @param {number} [innerBarCount] - The number of small bars within a bar group.  This is only required for multiple category axes.
      * @param {number} [offset] - The zero based index of an inner bar within a bar group.  This is only required for multiple category axes.
+     * @return {number} - The physical centre y co-ordinate.
      */
-    dimple.series.prototype._getCy = function (unscaledValue, innerBarCount, offset) {
+    dimple.Series.prototype._getCy = function (unscaledValue, innerBarCount, offset) {
         var returnCy = 0;
         // Validate the required parameters and properties
         dimple.validation._isDefined("y axis", this.y);
@@ -4343,40 +4357,46 @@ var dimple = {
 // Copyright: 2014 PMSI-AlignAlytics
 // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
 // Source: /src/objects/series/methods/_getHeight.js
+// Tests: /test/objects/series/methods/_getHeight.spec.js
 (function () {
     "use strict";
-    // Calculate the physical height for the passed unscaled value
-    dimple.series.prototype._getHeight = function (unscaledY, unscaledHeight, innerBarCount) {
+    /**
+     * Calculate the physical height of a bar or similar zone for given unscaled values.
+     * @param {string} [unscaledY] - Only required for measure axes - the logical Y position at which to start the shape.
+     * @param {number} [unscaledHeight] - Only required for measure axes - the logical height of the shape.
+     * @param {number} [innerBarCount] - Only required for multiple category axes - the number of inner categories within a group.
+     * @return {number} - The Physical height in pixels of a shape defined by the given values.
+     */
+    dimple.Series.prototype._getHeight = function (unscaledY, unscaledHeight, innerBarCount) {
         var returnHeight = 0;
         // Validate the axis
         dimple.validation._isDefined("y axis", this.y);
-        // If there is a time field the height is fixed
-        if (this.y._hasTimeField()) {
-            returnHeight = this.y.floatingBarWidth;
-        } else {
+        if (this.y._hasMeasure()) {
             // Validate variables
             dimple.validation._isDefined("unscaledY", unscaledY);
             dimple.validation._isDefined("unscaledHeight", unscaledHeight);
-            // Handle the return type based on axis type
-            if (this.y._hasMeasure() && unscaledY < 0) {
+            if (unscaledY < 0) {
                 // For a negative measure value subtract height from Y to get the extremity and subtract Y.  It doesn't
                 // work to just scale height because scale is not necessarily linear (e.g. Log axes)
                 returnHeight = Math.abs(this.y._scaleValue(unscaledY) - this.y._scaleValue(unscaledY + unscaledHeight));
-            } else if (this.y._hasMeasure()) {
+            } else {
                 // Add y to height to get the extremity and subtract Y.  It doesn't work to just scale height because
                 // scale is not necessarily linear (e.g. Log axes)
                 returnHeight = Math.abs(this.y._scaleValue(unscaledY) - this.y._scaleValue(unscaledY - unscaledHeight));
-            } else if (this.y._hasMultipleCategories()) {
-                // Validate the bar variables
-                dimple.validation._isPositiveNumber("innerBarCount", innerBarCount);
-                // Scale to get the left position of the bar and add half the bar size to get the centre
-                returnHeight = (this._getBarSize("y") / innerBarCount) - (2 * this._getInnerBarGap("y", innerBarCount));
-            } else if (this.y._hasCategories()) {
-                // Scale to get the left position of the bar and add half the bar size to get the centre
-                returnHeight = this._getBarSize("y");
-            } else {
-                throw dimple.exception.unsupportedAxisState("y");
             }
+        } else if (this.y._hasMultipleCategories()) {
+            // Validate the bar variables
+            dimple.validation._isPositiveNumber("innerBarCount", innerBarCount);
+            // Scale to get the left position of the bar and add half the bar size to get the centre
+            returnHeight = (this._getBarSize("y") / innerBarCount) - (2 * this._getInnerBarGap("y", innerBarCount));
+        } else if (this.y._hasTimeField()) {
+            // If there is a time field the height is fixed
+            returnHeight = this.y.floatingBarWidth;
+        } else if (this.y._hasCategories()) {
+            // Scale to get the left position of the bar and add half the bar size to get the centre
+            returnHeight = this._getBarSize("y");
+        } else {
+            throw dimple.exception.unsupportedAxisState("y");
         }
         // Return the height
         return returnHeight;
@@ -4386,10 +4406,16 @@ var dimple = {
 // Copyright: 2014 PMSI-AlignAlytics
 // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
 // Source: /src/objects/series/methods/_getInnerBarGap.js
+// Tests: /test/objects/series/methods/_getInnerBarGap.spec.js
 (function () {
     "use strict";
-    // The gap on one side of a horizontal bar inside a cluster
-    dimple.series.prototype._getInnerBarGap = function (position, innerBarCount) {
+    /**
+     * The gap on one side of a horizontal bar inside a cluster.
+     * @param {string} position - one-letter name of the axis on which to calculate the gap ("x" or "y").
+     * @param {string} innerBarCount - The number of bars in a group.
+     * @return {number} - The physical gap in pixels on one side of an inner bar.
+     */
+    dimple.Series.prototype._getInnerBarGap = function (position, innerBarCount) {
         var returnGap = 0;
         // Validate the axis
         dimple.validation._isDefined("position", position);
@@ -4406,10 +4432,15 @@ var dimple = {
 // Copyright: 2014 PMSI-AlignAlytics
 // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
 // Source: /src/objects/series/methods/_getRadius.js
+// Tests: /test/objects/series/methods/_getRadius.spec.js
 (function () {
     "use strict";
-    // Calculate the radius for the passed unscaled value
-    dimple.series.prototype._getRadius = function (unscaledValue) {
+    /**
+     * Calculate the radius for the passed unscaled value.
+     * @param {string} unscaledValue - The radius in logical values which will be converted to physical values.
+     * @return {number} - The distance from the centre to the outer edge of a circle representing the passed value.
+     */
+    dimple.Series.prototype._getRadius = function (unscaledValue) {
         // Return a default value for series without z axes
         var returnRadius = 5;
         // Validate the parameter
@@ -4426,40 +4457,46 @@ var dimple = {
 // Copyright: 2014 PMSI-AlignAlytics
 // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
 // Source: /src/objects/series/methods/_getWidth.js
+// Tests: /test/objects/series/methods/_getWidth.spec.js
 (function () {
     "use strict";
-    // Calculate the physical width for the passed unscaled value
-    dimple.series.prototype._getWidth = function (unscaledX, unscaledWidth, innerBarCount) {
+    /**
+     * Calculate the physical width of a bar or similar zone for given unscaled values.
+     * @param {string} [unscaledX] - Only required for measure axes - the logical X position at which to start the shape.
+     * @param {number} [unscaledWidth] - Only required for measure axes - the logical width of the shape.
+     * @param {number} [innerBarCount] - Only required for multiple category axes - the number of inner categories within a group.
+     * @return {number} - The Physical width in pixels of a shape defined by the given values.
+     */
+    dimple.Series.prototype._getWidth = function (unscaledX, unscaledWidth, innerBarCount) {
         var returnWidth = 0;
         // Validate the axis
         dimple.validation._isDefined("x axis", this.x);
-        // If there is a time field the width is fixed
-        if (this.x._hasTimeField()) {
-            returnWidth = this.x.floatingBarWidth;
-        } else {
+        if (this.x._hasMeasure()) {
             // Validate variables
             dimple.validation._isDefined("unscaledX", unscaledX);
             dimple.validation._isDefined("unscaledWidth", unscaledWidth);
-            // Handle the return type based on axis type
-            if (this.x._hasMeasure() && unscaledX < 0) {
+            if (unscaledX < 0) {
                 // For a negative measure value subtract width from X to get the extremity and subtract X.  It doesn't
                 // work to just scale width because scale is not necessarily linear (e.g. Log axes)
                 returnWidth = Math.abs(this.x._scaleValue(unscaledX - unscaledWidth) - this.x._scaleValue(unscaledX));
-            } else if (this.x._hasMeasure()) {
+            } else {
                 // Add x to width to get the extremity and subtract X.  It doesn't work to just scale width because
                 // scale is not necessarily linear (e.g. Log axes)
                 returnWidth = Math.abs(this.x._scaleValue(unscaledX + unscaledWidth) - this.x._scaleValue(unscaledX));
-            } else if (this.x._hasMultipleCategories()) {
-                // Validate the bar variables
-                dimple.validation._isPositiveNumber("innerBarCount", innerBarCount);
-                // Scale to get the left position of the bar and add half the bar size to get the centre
-                returnWidth = (this._getBarSize("x") / innerBarCount) - (2 * this._getInnerBarGap("x", innerBarCount));
-            } else if (this.x._hasCategories()) {
-                // Scale to get the left position of the bar and add half the bar size to get the centre
-                returnWidth = this._getBarSize("x");
-            } else {
-                throw dimple.exception.unsupportedAxisState("x");
             }
+        } else if (this.x._hasMultipleCategories()) {
+            // Validate the bar variables
+            dimple.validation._isPositiveNumber("innerBarCount", innerBarCount);
+            // Scale to get the left position of the bar and add half the bar size to get the centre
+            returnWidth = (this._getBarSize("x") / innerBarCount) - (2 * this._getInnerBarGap("x", innerBarCount));
+        } else if (this.x._hasTimeField()) {
+            // If there is a time field the width is fixed
+            returnWidth = this.x.floatingBarWidth;
+        } else if (this.x._hasCategories()) {
+            // Scale to get the left position of the bar and add half the bar size to get the centre
+            returnWidth = this._getBarSize("x");
+        } else {
+            throw dimple.exception.unsupportedAxisState("x");
         }
         // Return the width
         return returnWidth;
@@ -4469,11 +4506,17 @@ var dimple = {
 // Copyright: 2014 PMSI-AlignAlytics
 // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
 // Source: /src/objects/series/methods/_getX.js
+// Tests: /test/objects/series/methods/_getX.spec.js
 (function () {
     "use strict";
-    // Calculate the top left x co-ordinate for the passed unscaled value
-    // If provided, offset will calculate the center of the zero based nth inner bar
-    dimple.series.prototype._getX = function (unscaledValue, innerBarCount, offset) {
+    /**
+     * Calculate the physical top-left x co-ordinate for the passed unscaled value.
+     * @param {string} unscaledValue - The logical x value to be converted to a physical value.  It could be a string for category axes or a number for measure axes.
+     * @param {number} [innerBarCount] - The number of small bars within a bar group.  This is only required for multiple category axes.
+     * @param {number} [offset] - The zero based index of an inner bar within a bar group.  This is only required for multiple category axes.
+     * @return {number} - The physical top-left x co-ordinate.
+     */
+    dimple.Series.prototype._getX = function (unscaledValue, innerBarCount, offset) {
         var returnX = 0;
         // Validate the axis
         dimple.validation._isDefined("x axis", this.x);
@@ -4504,16 +4547,22 @@ var dimple = {
 // Copyright: 2014 PMSI-AlignAlytics
 // License: "https://github.com/PMSI-AlignAlytics/dimple/blob/master/MIT-LICENSE.txt"
 // Source: /src/objects/series/methods/_getY.js
+// Tests: /test/objects/series/methods/_getY.spec.js
 (function () {
     "use strict";
-    // Calculate the top left y co-ordinate for the passed unscaled value
-    // If provided, offset will calculate the center of the zero based nth inner bar
-    dimple.series.prototype._getY = function (unscaledValue, innerBarCount, offset) {
+    /**
+     * Calculate the physical top-left y co-ordinate for the passed unscaled value.
+     * @param {string} unscaledValue - The logical y value to be converted to a physical value.  It could be a string for category axes or a number for measure axes.
+     * @param {number} [innerBarCount] - The number of small bars within a bar group.  This is only required for multiple category axes.
+     * @param {number} [offset] - The zero based index of an inner bar within a bar group.  This is only required for multiple category axes.
+     * @return {number} - The physical top-left y co-ordinate.
+     */
+    dimple.Series.prototype._getY = function (unscaledValue, innerBarCount, offset) {
         var returnY = 0;
         // Validate the axis
         dimple.validation._isDefined("y axis", this.y);
         dimple.validation._isDefined("unscaledValue", unscaledValue);
-        // Handle the return type based on axis typex
+        // Handle the return type based on axis type
         if (this.y._hasTimeField()) {
             // Centre on the y value rather than return top left
             returnY = this.y._scaleValue(unscaledValue) - (this.y.floatingBarWidth / 2);
@@ -4542,7 +4591,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.series#wiki-addEventHandler
 (function () {
     "use strict";
-    dimple.series.prototype.addEventHandler = function (event, handler) {
+    dimple.Series.prototype.addEventHandler = function (event, handler) {
         this._eventHandlers.push({ event: event, handler: handler });
     };
 }());
@@ -4553,7 +4602,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.series#wiki-addOrderRule
 (function () {
     "use strict";
-    dimple.series.prototype.addOrderRule = function (ordering, desc) {
+    dimple.Series.prototype.addOrderRule = function (ordering, desc) {
         this._orderRules.push({ ordering : ordering, desc : desc });
     };
 }());
@@ -4564,7 +4613,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.storyboard
 (function () {
     "use strict";
-    dimple.storyboard = function (chart, categoryFields) {
+    dimple.Storyboard = function (chart, categoryFields) {
 
         // Handle an individual string as an array
         if (categoryFields !== null && categoryFields !== undefined) {
@@ -4602,7 +4651,7 @@ var dimple = {
 // Source: /src/objects/storyboard/methods/drawText.js
 (function () {
     "use strict";
-    dimple.storyboard.prototype._drawText = function (duration) {
+    dimple.Storyboard.prototype._drawText = function (duration) {
         if (this.storyLabel === null || this.storyLabel === undefined) {
             var chart = this.chart,
                 xCount = 0;
@@ -4638,7 +4687,7 @@ var dimple = {
 // Source: /src/objects/storyboard/methods/_getCategories.js
 (function () {
     "use strict";
-    dimple.storyboard.prototype._getCategories = function() {
+    dimple.Storyboard.prototype._getCategories = function() {
         if (this._categoryFields !== this._cachedCategoryFields) {
             // Clear the array
             this._categories = [];
@@ -4675,7 +4724,7 @@ var dimple = {
 // Source: /src/objects/storyboard/methods/_goToFrameIndex.js
 (function () {
     "use strict";
-    dimple.storyboard.prototype._goToFrameIndex = function (index) {
+    dimple.Storyboard.prototype._goToFrameIndex = function (index) {
         this._frame = index % this._getCategories().length;
         // Draw it with half duration, we want the effect of a 50% animation 50% pause.
         this.chart.draw(this.frameDuration / 2);
@@ -4688,7 +4737,7 @@ var dimple = {
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.storyboard#wiki-addOrderRule
 (function () {
     "use strict";
-    dimple.storyboard.prototype.addOrderRule = function (ordering, desc) {
+    dimple.Storyboard.prototype.addOrderRule = function (ordering, desc) {
         this._orderRules.push({ ordering : ordering, desc : desc });
     };
 }());
@@ -4698,7 +4747,7 @@ var dimple = {
 // Source: /src/objects/storyboard/methods/getFrameValue.js
 (function () {
     "use strict";
-    dimple.storyboard.prototype.getFrameValue = function () {
+    dimple.Storyboard.prototype.getFrameValue = function () {
         var returnValue = null;
         if (this._frame >= 0 && this._getCategories().length > this._frame) {
             returnValue = this._getCategories()[this._frame];
@@ -4712,7 +4761,7 @@ var dimple = {
 // Source: /src/objects/storyboard/methods/goToFrame.js
 (function () {
     "use strict";
-    dimple.storyboard.prototype.goToFrame = function (frameText) {
+    dimple.Storyboard.prototype.goToFrame = function (frameText) {
         if (this._getCategories().length > 0) {
             var index = this._getCategories().indexOf(frameText);
             this._goToFrameIndex(index);
@@ -4725,7 +4774,7 @@ var dimple = {
 // Source: /src/objects/storyboard/methods/pauseAnimation.js
 (function () {
     "use strict";
-    dimple.storyboard.prototype.pauseAnimation = function () {
+    dimple.Storyboard.prototype.pauseAnimation = function () {
         if (this._animationTimer !== null) {
             window.clearInterval(this._animationTimer);
             this._animationTimer = null;
@@ -4738,7 +4787,7 @@ var dimple = {
 // Source: /src/objects/storyboard/methods/startAnimation.js
 (function () {
     "use strict";
-    dimple.storyboard.prototype.startAnimation = function () {
+    dimple.Storyboard.prototype.startAnimation = function () {
         if (this._animationTimer === null) {
             if (this.onTick !== null) { this.onTick(this.getFrameValue()); }
             this._animationTimer = window.setInterval((function (storyboard) {
@@ -4759,7 +4808,7 @@ var dimple = {
 // Source: /src/objects/storyboard/methods/stopAnimation.js
 (function () {
     "use strict";
-    dimple.storyboard.prototype.stopAnimation = function () {
+    dimple.Storyboard.prototype.stopAnimation = function () {
         if (this._animationTimer !== null) {
             window.clearInterval(this._animationTimer);
             this._animationTimer = null;

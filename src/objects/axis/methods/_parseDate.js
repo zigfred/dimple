@@ -3,7 +3,7 @@
 // Source: /src/objects/axis/methods/_parseDate.js
 (function () {
     "use strict";
-    dimple.axis.prototype._parseDate = function (inDate) {
+    dimple.Axis.prototype._parseDate = function (inDate) {
         // A javascript date object
         var outDate;
         if (this.dateParseFormat === null || this.dateParseFormat === undefined) {

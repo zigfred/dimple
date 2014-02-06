@@ -3,7 +3,7 @@
 // Source: /src/objects/storyboard/methods/startAnimation.js
 (function () {
     "use strict";
-    dimple.storyboard.prototype.startAnimation = function () {
+    dimple.Storyboard.prototype.startAnimation = function () {
         if (this._animationTimer === null) {
             if (this.onTick !== null) { this.onTick(this.getFrameValue()); }
             this._animationTimer = window.setInterval((function (storyboard) {

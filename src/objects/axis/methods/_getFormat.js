@@ -3,7 +3,7 @@
 // Source: /src/objects/axis/methods/_getFormat.js
 (function () {
     "use strict";
-    dimple.axis.prototype._getFormat = function () {
+    dimple.Axis.prototype._getFormat = function () {
         var returnFormat,
             max,
             min,

@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addCategoryAxis
 (function () {
     "use strict";
-    dimple.chart.prototype.addCategoryAxis = function (position, categoryFields) {
+    dimple.Chart.prototype.addCategoryAxis = function (position, categoryFields) {
         return this.addAxis(position, categoryFields, null);
     };
 }());

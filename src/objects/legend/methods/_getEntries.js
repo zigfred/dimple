@@ -4,7 +4,7 @@
 (function () {
     "use strict";
     // Get an array of elements to be displayed in the legend
-    dimple.legend.prototype._getEntries = function () {
+    dimple.Legend.prototype._getEntries = function () {
         // Create an array of distinct series values
         var entries = [];
         // If there are some series

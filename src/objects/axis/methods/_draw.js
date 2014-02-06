@@ -3,5 +3,5 @@
 // Source: /src/objects/axis/methods/_draw.js
 (function () {
     "use strict";
-    dimple.axis.prototype._draw = null;
+    dimple.Axis.prototype._draw = null;
 }());

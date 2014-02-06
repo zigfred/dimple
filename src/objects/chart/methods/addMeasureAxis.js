@@ -4,7 +4,7 @@
 // Help: http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#wiki-addMeasureAxis
 (function () {
     "use strict";
-    dimple.chart.prototype.addMeasureAxis = function (position, measure) {
+    dimple.Chart.prototype.addMeasureAxis = function (position, measure) {
         return this.addAxis(position, null, measure);
     };
 }());

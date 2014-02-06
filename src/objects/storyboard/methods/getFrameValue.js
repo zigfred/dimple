@@ -3,7 +3,7 @@
 // Source: /src/objects/storyboard/methods/getFrameValue.js
 (function () {
     "use strict";
-    dimple.storyboard.prototype.getFrameValue = function () {
+    dimple.Storyboard.prototype.getFrameValue = function () {
         var returnValue = null;
         if (this._frame >= 0 && this._getCategories().length > this._frame) {
             returnValue = this._getCategories()[this._frame];
