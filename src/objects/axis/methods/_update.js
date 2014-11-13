@@ -218,8 +218,8 @@
                 step = ticks[1] - ticks[0];
                 // Get the remainder
                 remainder = ((this._max - this._min) % step).toFixed(0);
-		// Store the tick step if needed to calculate _getFormat.
-		this._tick_step = step;
+                // Store the tick step if needed to calculate _getFormat.
+                this._tick_step = step;
 
                 // If the remainder is not zero
                 if (remainder !== 0) {
